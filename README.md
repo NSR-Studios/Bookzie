@@ -28,27 +28,32 @@ Tracks what music an individual listens to, and pairs them with others based on 
 
 ## Product Spec
 ### 1. User Stories (Required and Optional)
-  * User logs in to access tthe account
-  * Profile 
 
 **Required Must-have Stories**
 
-* User logs in to access previous chats and preference settings
-* User picks what their favorite artist/genre/etc. (Think Spotify interface)
-* Matches have a chat window to get to know each other, with the ability to skip music and unmatch (Tinder Style).
-* Profile pages for each user
-* Settings (Accesibility, Notification, General, etc.)
+* User logs in to access the account
+* User can post a textbook with image, price & details
+* User can view book details (price,name etc) and compare prices from seller, Amazon/Google
+* User can view same textbooks from different sellers (RecyclerView)
+* User can search for speific textbooks through ISBN/Title
+* User can request to purchase textbook
+* Seller can select buyer from list (users who requested that textbook)
+* Implement Google MAPs API to determine meeting location of buyer and seller 
+* Buyer and Seller can reschedule/relocate/cancel transaction 
+* User can view seller profiles (show ratings and what they are currently selling)
+* User can view pending/completed transactions 
 
 **Optional Nice-to-have Stories**
 
 * Connection to Venmo
 * Expand the scope of app beyond textbooks 
+* User rates sellers
+* Q/A on Seller Posts
 
 ### 2. Screen Archetypes
 
 * Login 
 * Register - User signs up or logs into their account
-   * 
 * Messaging Screen - Chat for users to communicate (direct 1-on-1)
    * Upon selecting music choice users matched and message screen opens
 * Profile Screen 
