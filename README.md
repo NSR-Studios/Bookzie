@@ -52,34 +52,64 @@ Tracks what music an individual listens to, and pairs them with others based on 
 
 ### 2. Screen Archetypes
 
-* Login 
-* Register - User signs up or logs into their account
-* Messaging Screen - Chat for users to communicate (direct 1-on-1)
-   * Upon selecting music choice users matched and message screen opens
+* Login - User logs into their account
+* Register - User creates their own account
 * Profile Screen 
-   * Allows user to upload a photo and fill in information that is interesting to them and others
-* Song Selection Screen.
-   * Allows user to be able to choose their desired song, artist, genre of preference and begin listening and interacting with others.
-* Settings Screen
-   * Lets people change language, and app notification settings.
+   * Allows user to upload a photo and fill in information about them (Name, Major, Class of)
+   * Shows a complete list of past and current listings
+   * Optional: shows user's rating from previously completed transactions
+* Create Listing Screen.
+   * Allows user to be able to upload photos of the item being sold, list important information (ISBN, price, book dimensions, number of pages, class book is relevant to). 
+   * Show price of the textbook at online retailers (Amazon/Google)
+* Individual Listing Screen
+   * Lets user view the item being sold showing the important information (ISBN, price, book dimensions, number of pages, class book is relevant to). 
+   * Compares the price listed by the seller with the prices listed on online retailers (Amazon/Google)
+   * The user is able to request the book for purchase
+* All Listing Screen
+   * Lets user view the list of items being sold 
+   * Each listing shows its name, small image of the item, the seller's username/name, and price of the item being sold
+   * User can filter through the list by price (low to high, high to low)
+   * User can search through the list by name, or ISBN
+   * Optional: User can filter through the list by seller rating (above # stars)
+* All Transaction Screen 
+   * User can see a list of pending and completed(bought/sold/cancelled) tranactions
+   * User can filter through the list by pending or completed (bought/sold/cancelled) tranactions, by name, by price
+   * Upon selecting a transaction a detailed view of the transaction page will appear
+* Single Transaction Screen
+   * User can see the details of the item being sold (price, ISBN, page count)
+   * User can see the list of users that requested to purchase the listing item (Buyer name, time requested)
+   * Optional: User can select the form of payment for transaction (Cash/Venmo)
+   * Set meeting location from a list of buildings on campus (campus center, bookstore, coffee shop, library, etc)
+* Meeting Confirmation Screen
+   * User can see the details of the meet up for listing purchase (time, location, buyer information, seller information, item being sold, price)
+   * User should have the option to reschedule the meeting to a different location on campus
+   * User should have the option to reschedule the meeting to a different time
+* Optional: Settings Screen
+   * User should be able to change user profile details (Name, Major, Class of, photo)
+   * User can change view preferences between dark/light mode
+   * Optional: User can change app theme by selecting different colors
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
-* Music selection
-* Profile
-* Settings
+* Listing Screen
+* New Listing Screen
+* Transaction Listing Screen
+* Profile Screen
 
 Optional:
-* Music/Encounter Queue
-* Discover (Top Choices)
+* Settings Screen
 
 **Flow Navigation** (Screen to Screen)
 * Forced Log-in -> Account creation if no log in is available
-* Music Selection (Or Queue if Optional) -> Jumps to Chat
+* All Listing -> Jumps to Individual Listing
+* All Transaction -> Jumps to Single Transaction
+* Single Transaction -> Jumps to Meeting Confirmation
 * Profile -> Text field to be modified. 
-* Settings -> Toggle settings
+* Profile (Not Current Cser) -> Jumps to Individual Listing
+* Profile (Current User) -> Jumps to Single Transaction
+* Optional: Settings -> Toggle settings
 
 ## Wireframes
 <img src="https://i.imgur.com/9CrjH1K.jpg" width=800><br>
