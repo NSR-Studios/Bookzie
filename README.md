@@ -16,15 +16,15 @@ Unit 8: Group Milestone - README Example
 
 ## Overview
 ### Description
-Tracks what music an individual listens to, and pairs them with others based on that music. Could be potentially used as a dating app, or just meeting new friends with similar music tastes.
+An online marketplace for students on campus, that makes it easy, cheap and accessible for students to buy and sell new or used books.
 
 ### App Evaluation
 - **Category:** Education
-- **Mobile:** This app would be primarily developed for mobile but would perhaps be just as viable on a computer, such as tinder or other similar apps. Functionality wouldn't be limited to mobile devices, however mobile version could potentially have more features.
-- **Story:** Analyzes users music choices, and connects them to other users with similar choices. The user can then decide to message this person and befriend them if wanted.
-- **Market:** Any individual could choose to use this app, and to keep it a safe environment, people would be organized into age groups.
-- **Habit:** This app could be used as often or unoften as the user wanted depending on how deep their social life is, and what exactly they're looking for.
-- **Scope:** First we would start with pairing people based on music taste, then perhaps this could evolve into a music sharing application as well to broaden its usage. Large potential for use with spotify, apple music, or other music streaming applications.
+- **Mobile:** This app would be primarily developed for mobile.
+- **Story:** Allows users to either view all books for sale in there area, or allows them to sell books to users in there area.
+- **Market:** Main market is college students who are currently living on campus.
+- **Habit:** This app can be used alot by students who have finished clases and no longer need specific textbooks, can also just be used to sell items periodically.
+- **Scope:** A marketplace where students can sell dorm items, books, and whatever they no longer need that might be of use to another student, plan is to make this app the most populer option for selling items on campus.
 
 ## Product Spec
 ### 1. User Stories (Required and Optional)
