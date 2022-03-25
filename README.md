@@ -24,7 +24,7 @@ An online marketplace for students on campus, that makes it easy, cheap and acce
 - **Story:** Allows users to either view all books for sale in there area, or allows them to sell books to users in there area.
 - **Market:** Main market is college students.
 - **Habit:** This app can be used a lot by students who have finished clases and no longer need specific textbooks, can also just be used to sell items periodically.
-- **Scope:** A marketplace where students can sell dorm items, books, and whatever they no longer need that might be of use to another student, plan is to make this app the most populer option for selling items on campus.
+- **Scope:** A marketplace where students can sell books, and potentially dorm items or whatever they no longer need that might be of use to another student. The extended long-term plan is to make this app the most populer option for selling items on campus.
 
 ## Product Spec
 ### 1. User Stories (Required and Optional)
@@ -116,7 +116,7 @@ Optional:
 * All Transaction -> Jumps to Single Transaction
 * Single Transaction -> Jumps to Meeting Confirmation
 * Profile -> Text field to be modified. 
-* Profile (Not Current Cser) -> Jumps to Individual Listing
+* Profile (Not Current User) -> Jumps to Individual Listing
 * Profile (Current User) -> Jumps to Single Transaction
 * Optional: Settings -> Toggle settings
 
