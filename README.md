@@ -22,8 +22,8 @@ An online marketplace for students on campus, that makes it easy, cheap and acce
 - **Category:** Education
 - **Mobile:** This app would be primarily developed for mobile.
 - **Story:** Allows users to either view all books for sale in there area, or allows them to sell books to users in there area.
-- **Market:** Main market is college students who are currently living on campus.
-- **Habit:** This app can be used alot by students who have finished clases and no longer need specific textbooks, can also just be used to sell items periodically.
+- **Market:** Main market is college students.
+- **Habit:** This app can be used a lot by students who have finished clases and no longer need specific textbooks, can also just be used to sell items periodically.
 - **Scope:** A marketplace where students can sell dorm items, books, and whatever they no longer need that might be of use to another student, plan is to make this app the most populer option for selling items on campus.
 
 ## Product Spec
