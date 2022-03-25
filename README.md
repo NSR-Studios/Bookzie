@@ -65,6 +65,7 @@ Tracks what music an individual listens to, and pairs them with others based on 
    * Lets user view the item being sold showing the important information (ISBN, price, book dimensions, number of pages, class book is relevant to). 
    * Compares the price listed by the seller with the prices listed on online retailers (Amazon/Google)
    * The user is able to request the book for purchase
+   * Optional: The user is able to ask questions the seller can respond to about the listing
 * All Listing Screen
    * Lets user view the list of items being sold 
    * Each listing shows its name, small image of the item, the seller's username/name, and price of the item being sold
