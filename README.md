@@ -36,6 +36,7 @@ Tracks what music an individual listens to, and pairs them with others based on 
 * User can view book details (price,name etc) and compare prices from seller, Amazon/Google
   
   https://developers.google.com/books
+ 
   https://openlibrary.org/dev/docs/api/books
 * User can view same textbooks from different sellers (RecyclerView)
 * User can search for speific textbooks through ISBN/Title
