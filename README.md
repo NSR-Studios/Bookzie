@@ -53,7 +53,7 @@ Tracks what music an individual listens to, and pairs them with others based on 
 
 * Connection to Venmo
  
- https://stripe.com/docs/payments/payment-links/api
+  https://stripe.com/docs/payments/payment-links/api
 * Expand the scope of app beyond textbooks 
 * User rates sellers
 * Q/A on Seller Posts
