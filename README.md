@@ -91,6 +91,7 @@ An online marketplace for students on campus, that makes it easy, cheap and acce
    * Set meeting location from a list of buildings on campus (campus center, bookstore, coffee shop, library, etc)
 * Meeting Confirmation Screen
    * User can see the details of the meet up for listing purchase (time, location, buyer information, seller information, item being sold, price)
+   * User should see a map view of the meeting location
    * User should have the option to reschedule the meeting to a different location on campus
    * User should have the option to reschedule the meeting to a different time
 * Optional: Settings Screen
@@ -114,8 +115,9 @@ Optional:
 * Forced Log-in -> Account creation if no log in is available
 * All Listing -> Jumps to Individual Listing
 * All Transaction -> Jumps to Single Transaction
-* Single Transaction -> Jumps to Meeting Confirmation
-* Profile -> Text field to be modified. 
+* Single Transaction -> Jumps to Confirm Transaction Details
+* Confirm Transaction Details -> Jumps to Meeting Confirmation
+* Profile (Current User Edits)-> Jumps to Edit profile 
 * Profile (Not Current User) -> Jumps to Individual Listing
 * Profile (Current User) -> Jumps to Single Transaction
 * Optional: Settings -> Toggle settings
