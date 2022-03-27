@@ -126,11 +126,10 @@ Optional:
 * Optional: Settings -> Toggle settings
 
 ## Wireframes
-<img src="https://github.com/NSR-Studios/CampusTextbookConnect/blob/main/wireframe1.PNG" width=800><br>
-<img src="https://github.com/NSR-Studios/CampusTextbookConnect/blob/main/wireframe2.PNG" width=800><br>
 
 ### [BONUS] Digital Wireframes & Mockups
-<img src="https://i.imgur.com/lYHn37F.jpg" height=200>
+<img src="https://github.com/NSR-Studios/CampusTextbookConnect/blob/main/wireframe1.PNG" width=800><br>
+<img src="https://github.com/NSR-Studios/CampusTextbookConnect/blob/main/wireframe2.PNG" width=800><br>
 
 ### [BONUS] Interactive Prototype
 <img src="https://i.imgur.com/AiKfE5g.gif" width=200>
