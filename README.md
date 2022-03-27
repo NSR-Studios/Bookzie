@@ -126,7 +126,8 @@ Optional:
 * Optional: Settings -> Toggle settings
 
 ## Wireframes
-<img src="https://i.imgur.com/9CrjH1K.jpg" width=800><br>
+<img src="https://github.com/NSR-Studios/CampusTextbookConnect/blob/main/wireframe1.PNG" width=800><br>
+<img src="https://github.com/NSR-Studios/CampusTextbookConnect/blob/main/wireframe2.PNG" width=800><br>
 
 ### [BONUS] Digital Wireframes & Mockups
 <img src="https://i.imgur.com/lYHn37F.jpg" height=200>
