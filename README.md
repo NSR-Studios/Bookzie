@@ -1,4 +1,4 @@
-# CampusTextbookConnect
+# Bookzie
 
 Unit 8: Group Milestone - README Example
 ===
