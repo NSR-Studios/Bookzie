@@ -63,9 +63,10 @@ An online marketplace for students on campus, that makes it easy, cheap and acce
 * Login - User logs into their account
 * Register - User creates their own account
 * Profile Screen 
-   * Allows user to upload a photo and fill in information about them (Name, Major, Class of)
    * Shows a complete list of past and current listings
    * Optional: shows user's rating from previously completed transactions
+* Edit Profile Screen
+   * Allows user to upload a photo and fill in information about them (Name, Major, Graduation Year)
 * Create Listing Screen.
    * Allows user to be able to upload photos of the item being sold, list important information (ISBN, price, book dimensions, number of pages, class book is relevant to). 
    * Show price of the textbook at online retailers (Amazon/Google)
@@ -74,7 +75,7 @@ An online marketplace for students on campus, that makes it easy, cheap and acce
    * Compares the price listed by the seller with the prices listed on online retailers (Amazon/Google)
    * The user is able to request the book for purchase
    * Optional: The user (buyer) is able to ask questions the seller can respond to about the listing
-   * Optional: The user (seller) is able to answer questions the seller asks about the listing
+   * Optional: The user (seller) is able to answer questions the buyer asks about the listing
 * All Listing Screen
    * Lets user view the list of items being sold 
    * Each listing shows its name, small image of the item, the seller's username/name, and price of the item being sold
@@ -88,13 +89,14 @@ An online marketplace for students on campus, that makes it easy, cheap and acce
 * Single Transaction Screen
    * User can see the details of the item being sold (price, ISBN, page count)
    * User can see the list of users that requested to purchase the listing item (Buyer name, time requested)
-   * Optional: User can select the form of payment for transaction (Cash/Venmo)
+* Confirm Transaction Screen 
    * Set meeting location from a list of buildings on campus (campus center, bookstore, coffee shop, library, etc)
+   * Optional: User can select the form of payment for transaction (Cash/Venmo)
 * Meeting Confirmation Screen
    * User can see the details of the meet up for listing purchase (time, location, buyer information, seller information, item being sold, price)
    * User should see a map view of the meeting location
-   * User should have the option to reschedule the meeting to a different location on campus
-   * User should have the option to reschedule the meeting to a different time
+   * User should have the option to reschedule the meeting to a different location on campus or a different time
+   * User should have the option to cancel the transaction
 * Optional: Settings Screen
    * User should be able to change user profile details (Name, Major, Class of, photo)
    * User can change view preferences between dark/light mode
