@@ -118,28 +118,6 @@ Optional:
 * Profile (Current User) -> Jumps to Single Transaction
 * Optional: Settings -> Toggle settings
 
-## Milestones
-Milestone 1:
-Login and Register
-User profile (Does not include rating system)
-Create Post (Create and edit)
-
-Milestone 2:
-All Listings
-Individual Listing (Does not include Q/A)
-All transactions (Last 5 transaction regardless of filter)
-
-Milestone 3:
-Confirm transaction (Does not include venmo)
-Meeting Confirmation
-
-Milestone 4:
-Individual Listing (Q/A)
-Profile (User rating)
-Confirm transaction (Venmo)
-this is what i've as our to do list for each week the only real difficulties i'm seeing us having is the filtering for all listings/transactions and the API calls
-except that we should be good and its just about building the proper logic n getting the aesthetics in place
-
 ## Wireframes
 <img src="https://github.com/NSR-Studios/CampusTextbookConnect/blob/main/wireframe3.PNG" width=800><br>
 
