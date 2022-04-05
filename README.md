@@ -384,8 +384,7 @@ Optional:
                 return;
             }
             Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
-        }
-    }```
+        }```
 
 #### [OPTIONAL:] Existing API Endpoints
 ![](https://github.com/NSR-Studios/Bookzie/blob/main/books.PNG)
