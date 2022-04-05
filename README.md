@@ -135,7 +135,7 @@ Add table here
 
 ### Networking
 #### List of network requests by screen
-   - All Listings Screen
+   - ***All Listings Screen***
       - (Read/GET) Query all posts
          ```java
          
@@ -318,10 +318,8 @@ Add table here
     }```
    
    - ***Profile Screen***
-   	- (Read/GET) Query logged in user object
+      - (Read/GET) Query logged in user object
         ```java
-        
-
     protected void queryPosts() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         //get all the  where logged in user = current user
