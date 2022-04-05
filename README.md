@@ -135,30 +135,269 @@ Add table here
 
 ### Networking
 #### List of network requests by screen
-   - Home Feed Screen
-      - (Read/GET) Query all posts where user is author
+   - All Listings Screen
+      - (Read/GET) Query all posts
          ```java
-         let query = PFQuery(className:"Post")
-         query.whereKey("author", equalTo: currentUser)
-         query.order(byDescending: "createdAt")
-         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
-            if let error = error { 
-               print(error.localizedDescription)
-            } else if let posts = posts {
-               print("Successfully retrieved \(posts.count) posts.")
-           // TODO: Do something with posts...
-            }
-         }
+         
+         protected void queryPosts() {
+              ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
+              //get all the posts 
+              query.include(Post.KEY_USER);
+              query.setLimit(20);
+          //To Do: Add filters here
+              query.addDescendingOrder(Post.KEY_CREATED_KEY);
+              query.findInBackground(new FindCallback<Post>() {
+                  @Override
+                  public void done(List<Post> posts, ParseException e) {
+                      if (e != null) {
+                          Log.e(TAG,"Issue with getting posts",e);
+                      }
+                      for (Post post : posts) {
+                          //log (post.getUser.getUsername(), post.getISBN(), post.createdAt(), post.getfrontImage(), post.getbackImage etc.)
+                      }
+                      addAll(posts);
+                      //adapter.notifyDataSetChanged();
+                  }
+              });
+          }
+                  }
+               }
          ```
-      - (Create/POST) Create a new like on a post
-      - (Delete) Delete existing like
-      - (Create/POST) Create a new comment on a post
-      - (Delete) Delete existing comment
-   - Create Post Screen
+   - Individual Listings Screen
+      - (Read/GET) Query individual listing
+      - ```java
+             protected void queryPostIndividual() {
+            ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
+            //To do: get individual listing
+            //query.include(Post.KEY_USER);
+            query.setLimit(20);
+        //To Do: Add filters here
+            query.addDescendingOrder(Post.KEY_CREATED_KEY);
+            query.findInBackground(new FindCallback<Post>() {
+                @Override
+                public void done(List<Post> posts, ParseException e) {
+                    if (e != null) {
+                        Log.e(TAG,"Issue with getting posts",e);
+                    }
+
+                    addAll(posts);
+                    //adapter.notifyDataSetChanged();
+                }
+            });
+        }
+            ```
+   - All Transactions Screen
+     -(Read/GET) Query all pending transactions
+     ```java
+        protected void queryTransactionsPending() {
+        ParseQuery<Transactions> query = ParseQuery.getQuery(Transactions.class);
+        //get all the transactions
+        query.include(Transactions.KEY_USER);
+        query.setLimit(20);
+		//To Do: Add filters here for pending ones 
+        query.addDescendingOrder(Post.KEY_CREATED_KEY);
+        query.findInBackground(new FindCallback<Post>() {
+            @Override
+            public void done(List<Transactions> transactions, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG,"Issue with getting pending transactions",e);
+                }
+                for (Transactions transaction : transactions) {
+                    //To do 
+					
+                addAllT(transactions);
+                //adapter.notifyDataSetChanged();
+            }
+        });
+    }
+     
+     ```
+     
+      - (Read/GET) Query all completed transactions
+     ```java
+        protected void queryTransactionsCompleted() {
+        ParseQuery<Transactions> query = ParseQuery.getQuery(Transactions.class);
+        //get all the transactions
+        query.include(Transactions.KEY_USER);
+        query.setLimit(20);
+		//To Do: Add filters here for completed ones 
+        query.addDescendingOrder(Post.KEY_CREATED_KEY);
+        query.findInBackground(new FindCallback<Post>() {
+            @Override
+            public void done(List<Transactions> transactions, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG,"Issue with getting completed transactions",e);
+                }
+                for (Transactions transaction : transactions) {
+                    //To do 
+					
+                addAllT(transactions);
+                //adapter.notifyDataSetChanged();
+            }
+        });
+    }
+     ```
+   - Single Transaction Screen
+      - (Read/GET) Query requests table for list of requests for book
+      ```java
+           protected void queryRequests() {
+          ParseQuery<Requests> query = ParseQuery.getQuery(Requests.class);
+          //To do: add query for requests table
+          //query.include(Requests.KEY_USER);
+          query.setLimit(20);
+      //To Do: Add filters here
+          query.addDescendingOrder(Requests.KEY_CREATED_KEY);
+          query.findInBackground(new FindCallback<Requests>() {
+              @Override
+              public void done(List<Requests> requests, ParseException e) {
+                  if (e != null) {
+                      Log.e(TAG,"Issue with getting requests",e);
+                  }
+
+                  addAll(requests);
+                  //adapter.notifyDataSetChanged();
+              }
+          });
+      }
+      ```
+    - Confirm Transactions Screen
+      - (Update/PUT) Requests
+      ```java
+          private void saveRequest(//Parameters) {
+        Request request = new Request();
+        request.setDescription(description);
+        request.setImage(new ParseFile(photoFile));
+        request.setUser(currentUser);
+        request.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null) {
+                    Log.e(TAG,"Error while saving",e);
+                    Toast.makeText(getContext(),"Error while saving!",Toast.LENGTH_SHORT).show();
+                }
+                Log.i(TAG,"request save was successful!!");
+         
+            }
+        });
+
+    }
+      
+      ```
+    - Create Listing Screen
       - (Create/POST) Create a new post object
+      ```java
+          private void savePost(String description, double price, String ISBN, String class, ParseUser currentUser, File photoFile) {
+        Post post = new Post();
+        post.setDescription(description);
+		//To DO Set all Values of new post 
+		post.setPrice(price);
+		post.setISBN(ISBN);
+		post.setClass(class);
+        post.setImage(new ParseFile(photoFile));
+        post.setUser(currentUser);
+        post.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null) {
+                    Log.e(TAG,"Error while saving",e);
+                    Toast.makeText(getContext(),"Error while saving!",Toast.LENGTH_SHORT).show();
+                }
+                Log.i(TAG,"Post save was successful!!");
+				//To Do --> set the widgets (editText, image etc here)
+                //etDescription.setText("");
+                //ivPostImage.setImageResource(0);
+                //pb.setVisibility(ProgressBar.INVISIBLE);
+            }
+        });
+
+    }
+      
+      ```
    - Profile Screen
       - (Read/GET) Query logged in user object
-      - (Update/PUT) Update user profile image
+        ```java
+        
+
+    protected void queryPosts() {
+        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
+        //get all the  where logged in user = current user
+        query.include(Post.KEY_USER);
+        query.whereEqualTo(Post.KEY_USER, ParseUser.getCurrentUser());
+        query.setLimit(20);
+        query.addDescendingOrder(Post.KEY_CREATED_KEY);
+        query.findInBackground(new FindCallback<Post>() {
+            @Override
+            public void done(List<Post> posts, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG,"Issue with getting posts",e);
+                }
+                for (Post post : posts) {
+                    //TO DO 
+                }
+                allPosts.addAll(posts);
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+    }
+        
+        
+        ```
+      - (Update/PUT) Update user profile image and info
+      ```java
+      public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 200) {
+            if (resultCode == RESULT_OK) {
+                try {
+                    
+					//Save to current user the profile pic
+                    ParseUser.getCurrentUser().put("profilePic", new ParseFile(photoFile));
+                    ParseUser.getCurrentUser().save();
+					
+					//To DO: Save the other profile information
+
+                    // Set the profilePic ImageView as this new Image
+                    //String url = ParseUser.getCurrentUser().getParseFile("profilePic").getUrl();
+                    //Glide.with(getContext()).load(url).circleCrop().into(profilePic);
+                } catch (ParseException e) {
+                    Toast.makeText(getContext(), "Error saving image", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+
+                return;
+            }
+            Toast.makeText(getContext(), "Error taking image", Toast.LENGTH_SHORT).show();
+        }
+    }
+      
+      ```
+      
+   -  Meeting Confirmation Screen
+      - (Update/PUT) Change time, location or cancel transaction
+      ```java
+          public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 200) {
+            if (resultCode == RESULT_OK) {
+                try {
+                    // To DO: Save the new time or location or cancel transaction
+                    ParseUser.getCurrentUser().put("newTime", new ParseFile(        ));
+                    ParseUser.getCurrentUser().save();
+
+         
+                } catch (ParseException e) {
+                    Toast.makeText(getContext(), "Error saving", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+
+                return;
+            }
+            Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+        }
+    }
+      
+      ```
 
 #### [OPTIONAL:] Existing API Endpoints
 ##### An API Of Ice And Fire
