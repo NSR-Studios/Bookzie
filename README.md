@@ -316,8 +316,9 @@ Optional:
    
    - ***Profile Screen***
       - (Read/GET) Query logged in user object
-        ```java
-    protected void queryPosts() {
+      ```java
+      System.out.println("Hello");
+      rotected void queryPosts() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         //get all the  where logged in user = current user
         query.include(Post.KEY_USER);
@@ -336,8 +337,9 @@ Optional:
                 allPosts.addAll(posts);
                 adapter.notifyDataSetChanged();
             }
-        });```
-    
+        }); }
+      ```
+   
       - (Update/PUT) Update user profile image and info
       ```java
       public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
