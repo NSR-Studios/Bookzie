@@ -131,7 +131,7 @@ Optional:
 ## Schema 
 ### Models
 #### Post
-Add table here
+![](https://github.com/NSR-Studios/Bookzie/blob/main/Post.PNG)
 
 ### Networking
 #### List of network requests by screen
