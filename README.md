@@ -243,10 +243,9 @@ Add table here
       - ```java
            protected void queryRequests() {
           ParseQuery<Requests> query = ParseQuery.getQuery(Requests.class);
-          //To do: add query for requests table
+          //To do: add query for requests table and add the filters
           //query.include(Requests.KEY_USER);
           query.setLimit(20);
-	  //To Do: Add filters here
           query.addDescendingOrder(Requests.KEY_CREATED_KEY);
           query.findInBackground(new FindCallback<Requests>() {
               @Override
@@ -254,18 +253,15 @@ Add table here
                   if (e != null) {
                       Log.e(TAG,"Issue with getting requests",e);
                   }
-
                   addAll(requests);
                   //adapter.notifyDataSetChanged();
               }
           });
       }```
     
-
-    
-   
+ 
    - ***Confirm Transactions Screen***
-       -(Update/PUT) Requests
+      - (Update/PUT) Requests
       ```java
           private void saveRequest(//Parameters) {
         Request request = new Request();
@@ -283,7 +279,6 @@ Add table here
          
             }
         });
-
     }```
     
     
@@ -314,7 +309,6 @@ Add table here
                 //pb.setVisibility(ProgressBar.INVISIBLE);
             }
         });
-
     }```
    
    - ***Profile Screen***
@@ -341,20 +335,18 @@ Add table here
             }
         });```
     
-   	 - (Update/PUT) Update user profile image and info
+      - (Update/PUT) Update user profile image and info
       ```java
       public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 200) {
             if (resultCode == RESULT_OK) {
                 try {
-                    
-					//Save to current user the profile pic
+                    //Save to current user the profile pic
                     ParseUser.getCurrentUser().put("profilePic", new ParseFile(photoFile));
                     ParseUser.getCurrentUser().save();
 					
-					//To DO: Save the other profile information
-
+		    //To DO: Save the other profile information
                     // Set the profilePic ImageView as this new Image
                     //String url = ParseUser.getCurrentUser().getParseFile("profilePic").getUrl();
                     //Glide.with(getContext()).load(url).circleCrop().into(profilePic);
@@ -362,7 +354,6 @@ Add table here
                     Toast.makeText(getContext(), "Error saving image", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
-
                 return;
             }
             Toast.makeText(getContext(), "Error taking image", Toast.LENGTH_SHORT).show();
@@ -391,9 +382,7 @@ Add table here
             }
             Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
         }
-    }
-      
-      ```
+    }```
 
 #### [OPTIONAL:] Existing API Endpoints
 ##### An API Of Ice And Fire
