@@ -388,5 +388,5 @@ Optional:
     }```
 
 #### [OPTIONAL:] Existing API Endpoints
-##### An API Of Ice And Fire
-
+![](https://github.com/NSR-Studios/Bookzie/blob/main/Google%20books.PNG)
+![](https://github.com/NSR-Studios/Bookzie/blob/main/Google%20Maps.PNG)
