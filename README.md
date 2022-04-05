@@ -213,9 +213,10 @@ Optional:
                 //adapter.notifyDataSetChanged();
             }
         });
-    }```
-    
-    - (Read/GET) Query all pending transactions
+     ```
+	
+	
+      - (Read/GET) Query all pending transactions
      ```java
         protected void queryTransactionsPending() {
         ParseQuery<Transactions> query = ParseQuery.getQuery(Transactions.class);
