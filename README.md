@@ -163,7 +163,7 @@ Add table here
                   }
                }
          ```
-   - Individual Listings Screen
+   - ***Individual Listings Screen***
       - (Read/GET) Query individual listing
       - ```java
              protected void queryPostIndividual() {
@@ -186,33 +186,8 @@ Add table here
             });
         }
             ```
-   - All Transactions Screen
-     -(Read/GET) Query all pending transactions
-     ```java
-        protected void queryTransactionsPending() {
-        ParseQuery<Transactions> query = ParseQuery.getQuery(Transactions.class);
-        //get all the transactions
-        query.include(Transactions.KEY_USER);
-        query.setLimit(20);
-		//To Do: Add filters here for pending ones 
-        query.addDescendingOrder(Post.KEY_CREATED_KEY);
-        query.findInBackground(new FindCallback<Post>() {
-            @Override
-            public void done(List<Transactions> transactions, ParseException e) {
-                if (e != null) {
-                    Log.e(TAG,"Issue with getting pending transactions",e);
-                }
-                for (Transactions transaction : transactions) {
-                    //To do 
-					
-                addAllT(transactions);
-                //adapter.notifyDataSetChanged();
-            }
-        });
-    }
-     
-     ```
-     
+
+   - ***All Transactions Screen***
       - (Read/GET) Query all completed transactions
      ```java
         protected void queryTransactionsCompleted() {
@@ -235,17 +210,43 @@ Add table here
                 //adapter.notifyDataSetChanged();
             }
         });
-    }
-     ```
-   - Single Transaction Screen
+    }```
+    
+    - (Read/GET) Query all pending transactions
+     ```java
+        protected void queryTransactionsPending() {
+        ParseQuery<Transactions> query = ParseQuery.getQuery(Transactions.class);
+        //get all the transactions
+        query.include(Transactions.KEY_USER);
+        query.setLimit(20);
+		//To Do: Add filters here for pending ones 
+        query.addDescendingOrder(Post.KEY_CREATED_KEY);
+        query.findInBackground(new FindCallback<Post>() {
+            @Override
+            public void done(List<Transactions> transactions, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG,"Issue with getting pending transactions",e);
+                }
+                for (Transactions transaction : transactions) {
+                    //To do 
+					
+                addAllT(transactions);
+                //adapter.notifyDataSetChanged();
+            }
+        });```
+	
+	
+
+
+   - ***Single Transaction Screen***
       - (Read/GET) Query requests table for list of requests for book
-      ```java
+      - ```java
            protected void queryRequests() {
           ParseQuery<Requests> query = ParseQuery.getQuery(Requests.class);
           //To do: add query for requests table
           //query.include(Requests.KEY_USER);
           query.setLimit(20);
-      //To Do: Add filters here
+	  //To Do: Add filters here
           query.addDescendingOrder(Requests.KEY_CREATED_KEY);
           query.findInBackground(new FindCallback<Requests>() {
               @Override
@@ -258,10 +259,13 @@ Add table here
                   //adapter.notifyDataSetChanged();
               }
           });
-      }
-      ```
-    - Confirm Transactions Screen
-      - (Update/PUT) Requests
+      }```
+    
+
+    
+   
+   - ***Confirm Transactions Screen***
+       -(Update/PUT) Requests
       ```java
           private void saveRequest(//Parameters) {
         Request request = new Request();
@@ -280,10 +284,11 @@ Add table here
             }
         });
 
-    }
-      
-      ```
-    - Create Listing Screen
+    }```
+    
+    
+   
+   - ***Create Listing Screen***
       - (Create/POST) Create a new post object
       ```java
           private void savePost(String description, double price, String ISBN, String class, ParseUser currentUser, File photoFile) {
@@ -310,11 +315,10 @@ Add table here
             }
         });
 
-    }
-      
-      ```
-   - Profile Screen
-      - (Read/GET) Query logged in user object
+    }```
+   
+   - ***Profile Screen***
+   	- (Read/GET) Query logged in user object
         ```java
         
 
@@ -337,13 +341,9 @@ Add table here
                 allPosts.addAll(posts);
                 adapter.notifyDataSetChanged();
             }
-        });
-
-    }
-        
-        
-        ```
-      - (Update/PUT) Update user profile image and info
+        });```
+    
+   	 - (Update/PUT) Update user profile image and info
       ```java
       public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -369,11 +369,9 @@ Add table here
             }
             Toast.makeText(getContext(), "Error taking image", Toast.LENGTH_SHORT).show();
         }
-    }
+    }```
       
-      ```
-      
-   -  Meeting Confirmation Screen
+   -  ***Meeting Confirmation Screen***
       - (Update/PUT) Change time, location or cancel transaction
       ```java
           public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
