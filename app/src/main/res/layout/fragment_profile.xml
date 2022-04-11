@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".fragments.ProfileFragment">
 
+
     <TextView
         android:id="@+id/profile_username"
         android:layout_width="99dp"
@@ -44,6 +45,42 @@
         android:fontFamily="sans-serif-black"
         android:textColor="#FFFFFF"
         tools:text="Major: Computer Science" />
+
+    <Button
+        android:id="@+id/buttonEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="20dp"
+        android:text="Save" />
+
+    <EditText
+        android:id="@+id/profile_editMajor"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="70dp"
+        android:hint="Edit Major"
+        android:inputType="text"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#F6F6F6"
+        tools:text="ABC124" />
+
+    <EditText
+        android:id="@+id/profile_editClass"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="110dp"
+        android:hint="Edit Class"
+        android:inputType="text"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#F6F6F6"
+        tools:text="ABC124" />
 
     <TextView
         android:id="@+id/profile_classOf"

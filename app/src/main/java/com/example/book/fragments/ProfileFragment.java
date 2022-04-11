@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,6 +51,7 @@ public class ProfileFragment extends Fragment {
     PostsAdapter adapter;
     SwipeRefreshLayout refreshLayout;
     EndlessRecyclerViewScrollListener scrolling;
+    Button EditMe;
 
 
     @Override
@@ -69,10 +72,55 @@ public class ProfileFragment extends Fragment {
 
         //Set up major and class of
         TextView major = view.findViewById(R.id.profile_major);
-        major.setText("Major: Computer Science CS"); //+ParseUser.getCurrentUser().getMajor());
+        //ParseUser.getCurrentUser().put("Major","Computer Science");
+        major.setText("Major: " +ParseUser.getCurrentUser().getString("Major"));
+        EditText majorEdit = view.findViewById(R.id.profile_editMajor);
+        EditText classEdit = view.findViewById(R.id.profile_editClass);
+        //classEdit.setText("Edit Class");
         TextView classOf = view.findViewById(R.id.profile_classOf);
-        classOf.setText("Class of 22 - CS 113 Java"); //+ParseUser.getCurrentUser().getClass());
+        //ParseUser.getCurrentUser().put("ClassOf"," CS113");
+        classOf.setText("Class: " +ParseUser.getCurrentUser().getString("ClassOf"));
 
+        EditMe = view.findViewById(R.id.buttonEdit);
+        EditMe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "Button Clicked!", Toast.LENGTH_SHORT).show();
+                majorEdit.setEnabled(true);
+                majorEdit.requestFocus();
+                String textMe = "" + majorEdit.getText();
+
+                if(majorEdit.getText().toString().isEmpty()) {
+                    // editText is empty
+                } else {
+                    // editText is not empty
+                    ParseUser.getCurrentUser().put("Major",textMe);
+                }
+                //ParseUser.getCurrentUser().put("Major",textMe);
+                major.setText("Major: " +ParseUser.getCurrentUser().getString("Major"));
+
+                classEdit.setEnabled(true);
+                classEdit.requestFocus();
+                String textMe2 = "" + classEdit.getText();
+
+                if(classEdit.getText().toString().isEmpty()) {
+                    // editText is empty
+                } else {
+                    // editText is not empty
+                    ParseUser.getCurrentUser().put("ClassOf",textMe2);
+                }
+                //ParseUser.getCurrentUser().put("ClassOf",textMe2);
+                classOf.setText("Class: " +ParseUser.getCurrentUser().getString("ClassOf"));
+
+
+                try {
+                    ParseUser.getCurrentUser().save();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
         // Set up the password
         ParseFile image = ParseUser.getCurrentUser().getParseFile("ProfilePic");
         profilePic = view.findViewById(R.id.profile_pic);
@@ -89,7 +137,7 @@ public class ProfileFragment extends Fragment {
                 Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 photoFile = getPhotoFileUri("profile_pic.jpg");
 
-                Uri fileProvider = FileProvider.getUriForFile(getContext(), "com.codepath.fileprovider", photoFile);
+                Uri fileProvider = FileProvider.getUriForFile(getContext(), "com.codepath.fileprov", photoFile);
                 i.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
 
                 startActivityForResult(i, 200);
