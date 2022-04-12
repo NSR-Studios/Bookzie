@@ -52,7 +52,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="300dp"
         android:layout_marginTop="20dp"
-        android:text="Save" />
+        android:backgroundTint="#D22630"
+        android:text="Save"
+        android:textColor="#071D49" />
 
     <EditText
         android:id="@+id/profile_editMajor"
