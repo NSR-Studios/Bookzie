@@ -70,16 +70,27 @@ public class ProfileFragment extends Fragment {
         TextView username = view.findViewById(R.id.profile_username);
         username.setText("" + ParseUser.getCurrentUser().getUsername());
 
+
         //Set up major and class of
         TextView major = view.findViewById(R.id.profile_major);
         //ParseUser.getCurrentUser().put("Major","Computer Science");
-        major.setText("Major: " +ParseUser.getCurrentUser().getString("Major"));
+        if ((ParseUser.getCurrentUser().getString("Major")) == null) {
+            major.setText("Major: ");
+        }
+        else {
+            major.setText(" " +ParseUser.getCurrentUser().getString("Major"));
+        }
         EditText majorEdit = view.findViewById(R.id.profile_editMajor);
         EditText classEdit = view.findViewById(R.id.profile_editClass);
         //classEdit.setText("Edit Class");
         TextView classOf = view.findViewById(R.id.profile_classOf);
         //ParseUser.getCurrentUser().put("ClassOf"," CS113");
-        classOf.setText("Class: " +ParseUser.getCurrentUser().getString("ClassOf"));
+        if (ParseUser.getCurrentUser().getString("ClassOf") == null) {
+            classOf.setText("Class of: ");
+        }
+        else {
+            classOf.setText(" " + ParseUser.getCurrentUser().getString("ClassOf"));
+        }
 
         EditMe = view.findViewById(R.id.buttonEdit);
         EditMe.setOnClickListener(new View.OnClickListener() {
@@ -97,7 +108,7 @@ public class ProfileFragment extends Fragment {
                     ParseUser.getCurrentUser().put("Major",textMe);
                 }
                 //ParseUser.getCurrentUser().put("Major",textMe);
-                major.setText("Major: " +ParseUser.getCurrentUser().getString("Major"));
+                major.setText(" " +ParseUser.getCurrentUser().getString("Major"));
 
                 classEdit.setEnabled(true);
                 classEdit.requestFocus();
@@ -110,7 +121,7 @@ public class ProfileFragment extends Fragment {
                     ParseUser.getCurrentUser().put("ClassOf",textMe2);
                 }
                 //ParseUser.getCurrentUser().put("ClassOf",textMe2);
-                classOf.setText("Class: " +ParseUser.getCurrentUser().getString("ClassOf"));
+                classOf.setText(" " +ParseUser.getCurrentUser().getString("ClassOf"));
 
 
                 try {
@@ -152,14 +163,14 @@ public class ProfileFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
 
         // When we scroll, get the next page
-        scrolling = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
+        /*scrolling = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 queryPosts();
             }
-        };
+        };*/
 
-        rvPosts.addOnScrollListener(scrolling);
+        //rvPosts.addOnScrollListener(scrolling);
 
         adapter = new PostsAdapter(view.getContext(), allPosts);
         rvPosts.setAdapter(adapter);
