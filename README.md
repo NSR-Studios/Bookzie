@@ -2,6 +2,44 @@
 
 Unit 8: Group Milestone 
 
+
+## User Stories (Unit 10)
+
+The following functionality is completed:
+
+Create Login/Register Page
+- [X] User is able to input the username
+- [X] User is able to input a password
+- [X] User is authenticated through parsler and directed to home page
+- [X] User is able to register an account if they are a new user
+
+Configure Back4App
+- [X] Create Database
+- [X] Create Login Table
+- [X] Create Posts Table
+- [X] Create Users Table
+- [X] Create Transactions Table
+- [X] Create Requests Table
+
+Create User Profile
+- [X] User can edit profile pic.
+- [X] User can edit classOf and major
+- [X] Page displays username, major and classOf
+- [X] Page displays all recent posts they have created in a recycler view
+
+Create Listing
+- [X] User uses camera to take front and back image of book
+- [X] Get information entered from seller (ISBN, condition, price)
+- [X] User submits post
+
+
+## Video Walkthrough (Unit 10)
+
+Here's a walkthrough of implemented user stories:
+
+<img src='walthroughTrialFOUR.gif' title='Video Walkthrough' width='350' alt='Video Walkthrough' />
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ## Table of Contents
 1. [Overview](#Overview)
 1. [Product Spec](#Product-Spec)
