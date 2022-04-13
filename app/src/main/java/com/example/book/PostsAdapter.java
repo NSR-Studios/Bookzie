@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
@@ -48,29 +47,27 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView tvUsername;
+        private TextView tvBookTitle;
         private ImageView ivImage;
-        private TextView tvDescription;
-        private TextView tvTimeDate;
+        private TextView tvPrice;
+        private TextView tvISBN;
+        private TextView tvUser;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvUsername = itemView.findViewById(R.id.tvUsername);
+            tvUser = itemView.findViewById(R.id.tvUser);
+            tvBookTitle = itemView.findViewById(R.id.tvBookTitle);
             ivImage = itemView.findViewById(R.id.ivImage);
-            tvDescription = itemView.findViewById(R.id.tvDescription);
-            tvTimeDate = itemView.findViewById(R.id.tvTimeDate);
+            tvPrice = itemView.findViewById(R.id.tvPrice);
+            tvISBN = itemView.findViewById(R.id.tvISBN);
         }
 
         public void bind(Post post) {
             //Bind the post data to the view elements
-            tvDescription.setText("$" + Integer.toString(post.getPrice()));
-            tvUsername.setText("Title");
-            SimpleDateFormat DateFor1 = new SimpleDateFormat("dd/MM/yyyy");
-            SimpleDateFormat DateTimeFor1 = new SimpleDateFormat("h:mm a");
-            String stringDate1 = DateFor1.format(post.getCreated());
-            String stringTime1 = DateTimeFor1.format(post.getCreated());
-            String fullSent = "Created At: " + stringDate1 + " " + stringTime1;
-            tvTimeDate.setText("ISBN: " + Integer.toString(post.getISBN()));
+            tvUser.setText(post.getUser().getUsername());
+            tvPrice.setText("$" + Integer.toString(post.getPrice()));
+            tvBookTitle.setText("Title");;
+            tvISBN.setText("ISBN: " + Integer.toString(post.getISBN()));
             ParseFile image = post.getFrontImage();
             if (image != null) {
                 Glide.with(context).load(image.getUrl()).into(ivImage);
