@@ -1,6 +1,7 @@
 package com.example.book.fragments;
 
 import static android.app.Activity.RESULT_OK;
+import static android.content.ContentValues.TAG;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -23,6 +24,8 @@ import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
+import com.codepath.asynchttpclient.AsyncHttpClient;
+import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.example.book.Post;
 import com.example.book.R;
 import com.parse.FindCallback;
@@ -32,8 +35,13 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.util.List;
+
+import okhttp3.Headers;
 
 public class ComposeFragment extends Fragment {
     public static final String TAG = "ComposeFragment";
@@ -51,6 +59,9 @@ public class ComposeFragment extends Fragment {
     public String photoFileName = "photo.jpg";
     private File photoFile2;
     public String photoFileName2 = "photo2.jpg";
+    String title  = "";
+    String category = "";
+    String description = "";
 
 
     public ComposeFragment() {
@@ -76,6 +87,37 @@ public class ComposeFragment extends Fragment {
         ivBackImage = view.findViewById(R.id.ivBackImage);
         Submit = view.findViewById(R.id.Submit);
 
+        //IMPORTANT!!!!!!!!!!!!! Change url to accept the BOOKNUM!!!!!!!!!!!!!!!!!!!!!!!
+        String url = "https://www.googleapis.com/books/v1/volumes?q=isbn:9780316769532";
+
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.get(url, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Headers headers, JSON json) {
+                Log.d(TAG, "onSuccess");
+                JSONObject jsonObject = json.jsonObject;
+                try {
+                    JSONArray results = jsonObject.getJSONArray("items");
+                    Log.i(TAG, "Results: " + results.toString());
+                    JSONObject vI = results.getJSONObject(0).getJSONObject("volumeInfo");
+                    Log.i(TAG, "VI: "+ vI.toString());
+                    title = vI.getString("title");
+                    description = vI.getString("description");
+                    Log.i(TAG,"Title: "+title);
+                    category = vI.getJSONArray("categories").getString(0);
+                    Log.i(TAG,"Category: "+category);
+                } catch (Exception e) {
+                    Log.e(TAG, "Hit json exception", e);
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
+                Log.d(TAG, "onFailure");
+            }
+        });
+
         FrontCover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,7 +141,11 @@ public class ComposeFragment extends Fragment {
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String BookNum= ISBN.getText().toString();
+
+
+
                 if(BookNum.isEmpty()){
                     Toast.makeText(getContext(), "Must enter book ISBN number", Toast.LENGTH_SHORT).show();
                     return;
@@ -120,7 +166,8 @@ public class ComposeFragment extends Fragment {
                 }
 
                 ParseUser currentuser = ParseUser.getCurrentUser();
-                savePost(BookNum, currentuser, Con, Pri, photoFile, photoFile2);
+                Log.i(TAG,"Title HIHIHIHIHI: "+title);
+                savePost(BookNum, currentuser, Con, Pri, photoFile, photoFile2, title, description, category);
 
             }
         });
@@ -177,8 +224,12 @@ public class ComposeFragment extends Fragment {
         }
     }
 
-    private void savePost(String ISBN, ParseUser currentUser, String condition,   String Price, File photoFile, File photoFile2){
+    private void savePost(String ISBN, ParseUser currentUser, String condition,   String Price, File photoFile, File photoFile2, String title, String description, String category){
         Post post = new Post();
+        Log.i(TAG,"Title IN SAVEPOST: "+title);
+        post.setBookTitle(title);
+        post.setBookDescription(description);
+        post.setBookCategory(category);
         post.setISBN(Integer.parseInt(ISBN));
         post.setCondition(condition);
         post.setBackImage(new ParseFile(photoFile2));

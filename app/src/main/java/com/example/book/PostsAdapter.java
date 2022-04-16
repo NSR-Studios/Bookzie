@@ -66,7 +66,10 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
             //Bind the post data to the view elements
             tvUser.setText(post.getUser().getUsername());
             tvPrice.setText("$" + Integer.toString(post.getPrice()));
-            tvBookTitle.setText("Title");;
+            if (post.getBookTitle() != null)
+                tvBookTitle.setText(post.getBookTitle());
+            else
+                tvBookTitle.setText("Title Placeholder");
             tvISBN.setText("ISBN: " + Integer.toString(post.getISBN()));
             ParseFile image = post.getFrontImage();
             if (image != null) {

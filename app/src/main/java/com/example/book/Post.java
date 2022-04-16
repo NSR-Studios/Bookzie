@@ -18,6 +18,35 @@ public class Post extends ParseObject {
     public static final String KEY_USER = "user";
     public static final String KEY_CREATED_KEY = "createdAt";
     public static final String KEY_IMAGE = "ProfilePic";
+    public static final String BOOK_TITLE = "title";
+    public static final String BOOK_DESCRIPTION = "description";
+    public static final String BOOK_CATEGORY = "category";
+
+    public String getBookCategory() {
+        return getString(BOOK_CATEGORY);
+    }
+
+    public void setBookCategory(String bookCategory) {
+        put(BOOK_CATEGORY,bookCategory);
+    }
+
+    public String getBookDescription() {
+        return getString(BOOK_DESCRIPTION);
+    }
+
+    public void setBookDescription(String bookDescription)
+    {
+        put(BOOK_DESCRIPTION,bookDescription);
+    }
+
+    public String getBookTitle() {
+        return getString(BOOK_TITLE);
+    }
+
+    public void setBookTitle(String title)
+    {
+        put(BOOK_TITLE,title);
+    }
 
     public int getISBN() {
         return getInt(BOOK_NUMBER);
