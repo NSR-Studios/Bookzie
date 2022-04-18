@@ -5,8 +5,10 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
-import java.util.Date;
+import org.parceler.Parcel;
 
+import java.util.Date;
+@Parcel(analyze = Post.class)
 @ParseClassName("Post")
 public class Post extends ParseObject {
 
@@ -48,13 +50,9 @@ public class Post extends ParseObject {
         put(BOOK_TITLE,title);
     }
 
-    public String getISBN() {
-        return getString(BOOK_NUMBER);
-    }
+    public String getISBN() {return getString(BOOK_NUMBER);}
 
-    public void setISBN(String description){
-        put(BOOK_NUMBER,description);
-    }
+    public void setISBN(String description){put(BOOK_NUMBER,description);}
 
     public String getCondition() {
         return getString(CONDITION);
@@ -83,6 +81,11 @@ public class Post extends ParseObject {
         put(KEY_BACK_IMAGE,parseFile);
     }
 
+    public ParseFile getBackImage()
+    {
+        return getParseFile(KEY_BACK_IMAGE);
+    }
+
     public ParseFile getImage()
     {
         return getParseFile(KEY_IMAGE);
@@ -103,4 +106,5 @@ public class Post extends ParseObject {
 
     public Date getCreated(){return getCreatedAt();}
 }
+
 
