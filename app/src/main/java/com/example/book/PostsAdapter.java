@@ -1,10 +1,12 @@
 package com.example.book;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -37,6 +41,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Post post = posts.get(position);
         holder.bind(post);
+
     }
 
     @Override
@@ -51,6 +56,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
         private TextView tvPrice;
         private TextView tvISBN;
         private TextView tvUser;
+        private LinearLayout Container;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -59,6 +65,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
             ivImage = itemView.findViewById(R.id.ivImage);
             tvPrice = itemView.findViewById(R.id.tvPrice);
             tvISBN = itemView.findViewById(R.id.tvISBN);
+            Container = itemView.findViewById(R.id.Container);
         }
 
         public void bind(Post post) {
@@ -74,6 +81,15 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
             if (image != null) {
                 Glide.with(context).load(image.getUrl()).into(ivImage);
             }
+
+            Container.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(context,BookDetail.class);
+                    i.putExtra("Post", Parcels.wrap(post));
+                    context.startActivity(i);
+                }
+            });
 
         }
     }
