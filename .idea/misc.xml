@@ -12,9 +12,13 @@
         <entry key="..\:/Users/azx20/AndroidStudioProjects/Book/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
         <entry key="..\:/Users/azx20/AndroidStudioProjects/Book/app/src/main/res/layout/item_post.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/azx20/AndroidStudioProjects/Book/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.1" />
+        <entry key="..\:/Users/azx20/AndroidStudioProjects/Bookzie/app/src/main/res/layout/activity_book_detail.xml" value="0.1" />
         <entry key="..\:/Users/azx20/AndroidStudioProjects/Bookzie/app/src/main/res/layout/fragment_posts.xml" value="0.1" />
         <entry key="..\:/Users/azx20/AndroidStudioProjects/Bookzie/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
         <entry key="..\:/Users/azx20/AndroidStudioProjects/Bookzie/app/src/main/res/layout/item_post.xml" value="0.1" />
+        <entry key="..\:/Users/azx20/AndroidStudioProjects/Bookzie/app/src/main/res/layout/toolbar_main.xml" value="0.1" />
+        <entry key="..\:/Users/azx20/AndroidStudioProjects/Bookzie/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.1" />
+        <entry key="..\:/Users/azx20/AndroidStudioProjects/Bookzie/app/src/main/res/menu/menu_main.xml" value="0.1" />
         <entry key="..\:/Users/elzib/AndroidStudioProjects/Book/app/src/main/res/drawable/et_style.xml" value="0.396" />
         <entry key="..\:/Users/elzib/AndroidStudioProjects/Book/app/src/main/res/drawable/roundbutton.xml" value="0.396" />
         <entry key="..\:/Users/elzib/AndroidStudioProjects/Book/app/src/main/res/layout/activity_login.xml" value="0.5541666666666667" />
@@ -32,14 +36,8 @@
         <entry key="..\:/Users/sapan/Downloads/Book/app/src/main/res/layout/logo.xml" value="0.4041666666666667" />
         <entry key="..\:/Users/sapan/Downloads/Book/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.4041666666666667" />
         <entry key="..\:/Users/sapan/Downloads/Bookzie/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/sapan/Downloads/Bookzie/app/src/main/res/layout/activity_main.xml" value="0.23072916666666668" />
-        <entry key="..\:/Users/sapan/Downloads/Bookzie/app/src/main/res/layout/activity_single_transaction.xml" value="0.17592592592592593" />
         <entry key="..\:/Users/sapan/Downloads/Bookzie/app/src/main/res/layout/fragment_posts.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/sapan/Downloads/Bookzie/app/src/main/res/layout/fragment_profile.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/sapan/Downloads/Bookzie/app/src/main/res/layout/fragment_transaction.xml" value="0.4041666666666667" />
-        <entry key="..\:/Users/sapan/Downloads/Bookzie/app/src/main/res/layout/item_post.xml" value="0.17222222222222222" />
-        <entry key="..\:/Users/sapan/Downloads/Bookzie/app/src/main/res/layout/item_request.xml" value="0.4" />
-        <entry key="..\:/Users/sapan/Downloads/Bookzie/app/src/main/res/layout/transaction_single.xml" value="0.4041666666666667" />
       </map>
     </option>
   </component>

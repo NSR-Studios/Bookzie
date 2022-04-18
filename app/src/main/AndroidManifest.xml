@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Book">
         <activity
-            android:name=".singleTransaction"
+            android:name=".BookDetail"
             android:exported="false" />
 
         <provider

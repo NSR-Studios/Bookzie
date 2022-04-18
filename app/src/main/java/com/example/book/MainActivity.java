@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        androidx.appcompat.app.ActionBar actionBar = getSupportActionBar();
+        /*androidx.appcompat.app.ActionBar actionBar = getSupportActionBar();
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         actionBar.setTitle("");
         actionBar.setDisplayShowCustomEnabled(true);
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setBackgroundDrawable(colorDrawable);
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.logo, null);
-        actionBar.setCustomView(view);
+        actionBar.setCustomView(view);*/
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
