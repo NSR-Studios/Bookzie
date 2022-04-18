@@ -59,9 +59,6 @@ public class ComposeFragment extends Fragment {
     public String photoFileName = "photo.jpg";
     private File photoFile2;
     public String photoFileName2 = "photo2.jpg";
-    String title  = "";
-    String category = "";
-    String description = "";
 
 
     public ComposeFragment() {
@@ -88,35 +85,36 @@ public class ComposeFragment extends Fragment {
         Submit = view.findViewById(R.id.Submit);
 
         //IMPORTANT!!!!!!!!!!!!! Change url to accept the BOOKNUM!!!!!!!!!!!!!!!!!!!!!!!
-        String url = "https://www.googleapis.com/books/v1/volumes?q=isbn:9780316769532";
-
-        AsyncHttpClient client = new AsyncHttpClient();
-        client.get(url, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Headers headers, JSON json) {
-                Log.d(TAG, "onSuccess");
-                JSONObject jsonObject = json.jsonObject;
-                try {
-                    JSONArray results = jsonObject.getJSONArray("items");
-                    Log.i(TAG, "Results: " + results.toString());
-                    JSONObject vI = results.getJSONObject(0).getJSONObject("volumeInfo");
-                    Log.i(TAG, "VI: "+ vI.toString());
-                    title = vI.getString("title");
-                    description = vI.getString("description");
-                    Log.i(TAG,"Title: "+title);
-                    category = vI.getJSONArray("categories").getString(0);
-                    Log.i(TAG,"Category: "+category);
-                } catch (Exception e) {
-                    Log.e(TAG, "Hit json exception", e);
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
-                Log.d(TAG, "onFailure");
-            }
-        });
+//        String extra = ISBN.getText().toString();
+//        String url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + extra;
+//
+//        AsyncHttpClient client = new AsyncHttpClient();
+//        client.get(url, new JsonHttpResponseHandler() {
+//            @Override
+//            public void onSuccess(int statusCode, Headers headers, JSON json) {
+//                Log.d(TAG, "onSuccess");
+//                JSONObject jsonObject = json.jsonObject;
+//                try {
+//                    JSONArray results = jsonObject.getJSONArray("items");
+//                    Log.i(TAG, "Results: " + results.toString());
+//                    JSONObject vI = results.getJSONObject(0).getJSONObject("volumeInfo");
+//                    Log.i(TAG, "VI: "+ vI.toString());
+//                    title = vI.getString("title");
+//                    description = vI.getString("description");
+//                    Log.i(TAG,"Title: "+title);
+//                    category = vI.getJSONArray("categories").getString(0);
+//                    Log.i(TAG,"Category: "+category);
+//                } catch (Exception e) {
+//                    Log.e(TAG, "Hit json exception", e);
+//                    e.printStackTrace();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
+//                Log.d(TAG, "onFailure");
+//            }
+//        });
 
         FrontCover.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,7 +140,67 @@ public class ComposeFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                Post post = new Post();
+                ParseUser currentuser = ParseUser.getCurrentUser();
                 String BookNum= ISBN.getText().toString();
+                String url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + BookNum;
+                Log.i(TAG, "URL: " + url);
+
+                AsyncHttpClient client = new AsyncHttpClient();
+                client.get(url, new JsonHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Headers headers, JSON json) {
+                        Log.d(TAG, "onSuccess");
+                        JSONObject jsonObject = json.jsonObject;
+                        try {
+                            String title  = "";
+                            String category = "";
+                            String description = "";
+                            String image = "";
+                            JSONArray results = jsonObject.getJSONArray("items");
+                            Log.i(TAG, "Results: " + results.toString());
+                            JSONObject vI = results.getJSONObject(0).getJSONObject("volumeInfo");
+                            image = vI.getJSONObject("imageLinks").getString("smallThumbnail");
+                            post.setImageUrl(image);
+                            Log.i(TAG, "LinkToImage: "+ image);
+                            Log.i(TAG, "VI: "+ vI.toString());
+                            title = vI.getString("title");
+                            description = vI.getString("description");
+                            Log.i(TAG,"Title: "+title);
+                            category = vI.getJSONArray("categories").getString(0);
+                            Log.i(TAG,"Category: "+category);
+                            post.setISBN(BookNum);
+                            post.setCondition(Condition.getText().toString());
+                            post.setBackImage(new ParseFile(photoFile2));
+                            post.setFrontImage(new ParseFile(photoFile));
+                            post.setPrice(Integer.parseInt(Price.getText().toString()));
+                            post.setUser(currentuser);
+                            post.setBookTitle(title);
+                            post.setBookDescription(description);
+                            post.setBookCategory(category);
+                            post.saveInBackground(new SaveCallback() {
+                                @Override
+                                public void done(ParseException e) {
+                                    if( e != null){
+                                        Log.e(TAG, "Error while saving", e);
+                                    }
+                                    Log.i(TAG, "Post was successful!!" );
+                                    Condition.setText("");
+                                    ivFrontImage.setImageResource(0);
+                                    ivBackImage.setImageResource(0);
+                                }
+                            });
+                        } catch (Exception e) {
+                            Log.e(TAG, "Hit json exception", e);
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
+                        Log.d(TAG, "onFailure");
+                    }
+                });
 
 
 
@@ -165,14 +223,8 @@ public class ComposeFragment extends Fragment {
                     return;
                 }
 
-                ParseUser currentuser = ParseUser.getCurrentUser();
-                Log.i(TAG,"Title HIHIHIHIHI: "+title);
-                savePost(BookNum, currentuser, Con, Pri, photoFile, photoFile2, title, description, category);
-
             }
         });
-
-        //queryPosts();
 
     }
 
