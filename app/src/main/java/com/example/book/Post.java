@@ -23,6 +23,15 @@ public class Post extends ParseObject {
     public static final String BOOK_TITLE = "title";
     public static final String BOOK_DESCRIPTION = "description";
     public static final String BOOK_CATEGORY = "category";
+    public static final String BOOK_IMAGE = "ImageUrl";
+
+    public String getImageUrl() {
+        return getString(BOOK_IMAGE);
+    }
+
+    public void setImageUrl(String url) {
+        put(BOOK_IMAGE,url);
+    }
 
     public String getBookCategory() {
         return getString(BOOK_CATEGORY);
@@ -106,5 +115,7 @@ public class Post extends ParseObject {
 
     public Date getCreated(){return getCreatedAt();}
 }
+
+
 
 
