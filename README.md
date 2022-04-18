@@ -2,6 +2,41 @@
 
 Unit 8: Group Milestone 
 
+## User Stories (Unit 11)
+
+The following functionality is completed:
+
+Single Transaction Page
+- [X] View Book Cover from Books API
+- [X] View information obtained from Books API (title, category, description) & price from the seller
+- [X] See completed and pending requests in a recycler view
+
+Individual Listing Page
+- [X] View Book Cover from Books API
+- [X] View information obtained from Books API (title, description, category)
+- [X] View information entered from seller (ISBN, condition, images of book & price)
+- [ ] View prices from other online retailers of book using the Amazon or Google API
+
+All Listing Page
+- [X] Create a recycler view to show all posts from the posts table
+- [X] Post shows important information (Book Title, ISBN, Price, the time it was listed, Username of the seller, Books API image of the book)
+- [X] Posts can be filtered from a search bar that accepts book titles or ISBNs
+- [X] Posts can be sorted by price (low to high or high to low)
+
+
+## Video Walkthrough (Unit 11)
+
+Here's a walkthrough of implemented user stories:
+
+<img src='' title='Video Walkthrough' width='350' alt='Video Walkthrough' />
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
+
+
+---
+
+
 
 ## User Stories (Unit 10)
 
@@ -40,6 +75,8 @@ Here's a walkthrough of implemented user stories:
 <img src='walthroughTrialFOUR.gif' title='Video Walkthrough' width='350' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
+
 ## Table of Contents
 1. [Overview](#Overview)
 1. [Product Spec](#Product-Spec)
