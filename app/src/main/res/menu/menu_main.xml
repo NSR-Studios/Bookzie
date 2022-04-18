@@ -3,6 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".PostsFragment">
+
+
+    <item
+        android:id="@+id/action_money"
+        android:icon="@drawable/ic_action_up"
+        android:iconTint="@color/white"
+        android:title="Money"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_lowhigh"
+        android:icon="@drawable/ic_action_down"
+        android:iconTint="@color/white"
+        android:title="Money"
+        app:showAsAction="always" />
+
     <item
         android:id="@+id/action_search"
         android:title="Search"
