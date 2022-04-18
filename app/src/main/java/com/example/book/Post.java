@@ -48,11 +48,11 @@ public class Post extends ParseObject {
         put(BOOK_TITLE,title);
     }
 
-    public int getISBN() {
-        return getInt(BOOK_NUMBER);
+    public String getISBN() {
+        return getString(BOOK_NUMBER);
     }
 
-    public void setISBN(int description){
+    public void setISBN(String description){
         put(BOOK_NUMBER,description);
     }
 

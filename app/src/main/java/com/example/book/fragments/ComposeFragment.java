@@ -230,7 +230,7 @@ public class ComposeFragment extends Fragment {
         post.setBookTitle(title);
         post.setBookDescription(description);
         post.setBookCategory(category);
-        post.setISBN(Integer.parseInt(ISBN));
+        post.setISBN(ISBN);
         post.setCondition(condition);
         post.setBackImage(new ParseFile(photoFile2));
         post.setFrontImage(new ParseFile(photoFile));

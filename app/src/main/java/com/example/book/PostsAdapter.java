@@ -37,7 +37,6 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Post post = posts.get(position);
         holder.bind(post);
-
     }
 
     @Override
@@ -70,13 +69,11 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
                 tvBookTitle.setText(post.getBookTitle());
             else
                 tvBookTitle.setText("Title Placeholder");
-            tvISBN.setText("ISBN: " + Integer.toString(post.getISBN()));
+            tvISBN.setText("ISBN: " + post.getISBN());
             ParseFile image = post.getFrontImage();
             if (image != null) {
                 Glide.with(context).load(image.getUrl()).into(ivImage);
             }
-
-
 
         }
     }
