@@ -6,23 +6,23 @@ Unit 8: Group Milestone
 
 The following functionality is completed:
 
-Single Transaction Page
-- [X] View Book Cover from Books API
-- [X] View information obtained from Books API (title, category, description) & price from the seller
-- [X] See completed and pending requests in a recycler view
+All Transaction Page
+- [X] Create a recycler view of pending and completed(bought/sold/cancelled) transactions with last five transactions showing at minimum if present
+- [X] Show the buyer and seller associated with the transaction
+- [X] Show the book title, ISBN and price associated with each transaction
 
-Individual Listing Page
+Individual Listing (Book Details) Page
 - [X] View Book Cover from Books API
 - [X] View information obtained from Books API (title, description, category)
 - [X] View information entered from seller (ISBN, condition, images of book & price)
+- [X] Button shown to request the book
 - [ ] View prices from other online retailers of book using the Amazon or Google API
 
 All Listing Page
-- [X] Create a recycler view to show all posts from the posts table
-- [X] Post shows important information (Book Title, ISBN, Price, the time it was listed, Username of the seller, Books API image of the book)
-- [X] Posts can be filtered from a search bar that accepts book titles or ISBNs
-- [X] Posts can be sorted by price (low to high or high to low)
-
+- [x] Create a recycler view to show all posts from the posts table
+- [x] Post shows important information (Book Title, ISBN, Price, the time it was listed, Username of the seller, Books image of the book)
+- [x] Posts can be filtered from a search bar that accepts book titles or ISBNs
+- [x] Posts can be sorted by price (low to high or high to low)
 
 ## Video Walkthrough (Unit 11)
 
