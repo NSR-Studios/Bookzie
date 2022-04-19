@@ -16,7 +16,6 @@ Individual Listing (Book Details) Page
 - [X] View information obtained from Books API (title, description, category)
 - [X] View information entered from seller (ISBN, condition, images of book & price)
 - [X] Button shown to request the book
-- [ ] View prices from other online retailers of book using the Amazon or Google API
 
 All Listing Page
 - [x] Create a recycler view to show all posts from the posts table
