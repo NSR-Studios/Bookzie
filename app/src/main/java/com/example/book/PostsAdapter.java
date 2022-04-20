@@ -2,6 +2,7 @@ package com.example.book;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,7 +80,15 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder>{
                 tvBookTitle.setText("Title Placeholder");
             tvISBN.setText("ISBN: " + post.getISBN());
             ParseFile image = post.getFrontImage();
-            if (image != null) {
+            String imageURL = post.getImageUrl();
+            if (imageURL != null)
+            {
+                String url = post.getImageUrl();
+                url = url.substring(0,4) + "s" + url.substring(4);
+                Log.i("Link", "LinkToImage: "+ url);
+                Glide.with(context).load(url).into(ivImage);
+            }
+            else if (image != null) {
                 Glide.with(context).load(image.getUrl()).into(ivImage);
             }
 
