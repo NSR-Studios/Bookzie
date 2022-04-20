@@ -19,7 +19,7 @@ Individual Listing (Book Details) Page
 
 All Listing Page
 - [x] Create a recycler view to show all posts from the posts table
-- [x] Post shows important information (Book Title, ISBN, Price, the time it was listed, Username of the seller, Books image of the book)
+- [x] Post shows important information (Book Title, ISBN, Price, Username of the seller, Books image of the book)
 - [x] Posts can be filtered from a search bar that accepts book titles or ISBNs
 - [x] Posts can be sorted by price (low to high or high to low)
 
