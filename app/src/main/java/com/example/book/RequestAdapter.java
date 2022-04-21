@@ -1,11 +1,13 @@
 package com.example.book;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -52,6 +56,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
         private TextView tvISBN;
         private TextView tvUser;
         private TextView tvUser2;
+        private LinearLayout container;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,6 +66,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
             ivImage = itemView.findViewById(R.id.ivImage);
             tvPrice = itemView.findViewById(R.id.tvPrice);
             tvISBN = itemView.findViewById(R.id.tvISBN);
+            container = itemView.findViewById(R.id.container);
         }
 
         public void bind(Request request) {
@@ -78,6 +84,15 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
             if (image != null) {
                 Glide.with(context).load(image.getUrl()).into(ivImage);
             }
+
+            container.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(context, singleTransaction.class);
+                    i.putExtra("Request", Parcels.wrap(request));
+                    context.startActivity(i);
+                }
+            });
         }
     }
 }

@@ -77,7 +77,9 @@ public class TransactionFragment extends Fragment {
         query.include(Request.Requester);
         query.include(Request.Seller);
         query.include(Request.Postid);
+        query.include(Request.Status);
         query.whereEqualTo(Request.Requester, ParseUser.getCurrentUser());
+        query.whereEqualTo(Request.Status, "false");
         query.setLimit(5);
         //To Do: Add filters here for pending ones
         query.findInBackground(new FindCallback<Request>() {
@@ -89,10 +91,8 @@ public class TransactionFragment extends Fragment {
                 for (Request request : requests) {
                     //To do
                     Log.i(TAG, "Pending Requester " + Request.getStatus());
-
                         addAllP(requests);
                         adapter1.notifyDataSetChanged();
-
                 }
             }
         });
@@ -101,7 +101,9 @@ public class TransactionFragment extends Fragment {
         query.include(Request.Requester);
         query.include(Request.Seller);
         query.include(Request.Postid);
+        query.include(Request.Status);
         query.whereEqualTo(Request.Seller, ParseUser.getCurrentUser());
+        query.whereEqualTo(Request.Status, "false");
         query.setLimit(5);
         query.findInBackground(new FindCallback<Request>() {
             @Override
@@ -112,10 +114,8 @@ public class TransactionFragment extends Fragment {
                 for (Request request : requests) {
                     //To do
                     Log.i(TAG, "Pending Seller " + Request.getStatus());
-
                         addAllP(requests);
                         adapter1.notifyDataSetChanged();
-
                 }
             }
         });
@@ -129,6 +129,7 @@ public class TransactionFragment extends Fragment {
         query.include(Request.Postid);
         query.include(Request.Status);
         query.whereEqualTo(Request.Requester, ParseUser.getCurrentUser());
+        query.whereEqualTo(Request.Status, "true");
         query.setLimit(5);
         //To Do: Add filters here for pending ones
         query.findInBackground(new FindCallback<Request>() {
@@ -140,10 +141,8 @@ public class TransactionFragment extends Fragment {
                 for (Request request : requests) {
                     //To do
                     Log.i(TAG, "Completed Requester " + Request.getStatus());
-
                         addAllC(requests);
                         adapter2.notifyDataSetChanged();
-
                 }
             }
         });
@@ -154,6 +153,7 @@ public class TransactionFragment extends Fragment {
         query.include(Request.Postid);
         query.include(Request.Status);
         query.whereEqualTo(Request.Seller, ParseUser.getCurrentUser());
+        query.whereEqualTo(Request.Status, "true");
         query.setLimit(5);
         query.findInBackground(new FindCallback<Request>() {
             @Override

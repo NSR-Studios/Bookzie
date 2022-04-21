@@ -16,6 +16,9 @@
         <activity
             android:name=".BookDetail"
             android:exported="false" />
+        <activity
+            android:name=".singleTransaction"
+            android:exported="false" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
