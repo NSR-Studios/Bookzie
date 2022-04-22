@@ -34,7 +34,7 @@ public class singleTransaction extends AppCompatActivity {
     private ImageView cover2;
 
     private RecyclerView requester;
-    protected RequestAdapter adapter;
+    protected listRequestersAdapter adapter;
     private LinearLayoutManager linearLayoutManager;
     protected List<Request> listRequesters;
 
@@ -71,10 +71,11 @@ public class singleTransaction extends AppCompatActivity {
 
         requester = findViewById(R.id.requesters);
         listRequesters = new ArrayList<>();
-        adapter = new RequestAdapter(this, listRequesters);
+        adapter = new listRequestersAdapter(this, listRequesters);
         requester.setAdapter(adapter);
         linearLayoutManager = new LinearLayoutManager(this);
         requester.setLayoutManager(linearLayoutManager);
+        Log.i("singleTransaction", request.getPost().getObjectId());
         queryRequesters(request.getPost().getObjectId());
     }
 
