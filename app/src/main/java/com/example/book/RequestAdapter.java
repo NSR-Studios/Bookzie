@@ -63,7 +63,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
             tvUser = itemView.findViewById(R.id.tvUser);
             tvUser2 = itemView.findViewById(R.id.tvUser2);
             tvBookTitle = itemView.findViewById(R.id.tvBookTitle);
-            ivImage = itemView.findViewById(R.id.ivImage);
+            ivImage = itemView.findViewById(R.id.cover2);
             tvPrice = itemView.findViewById(R.id.tvPrice);
             tvISBN = itemView.findViewById(R.id.tvISBN);
             container = itemView.findViewById(R.id.container);

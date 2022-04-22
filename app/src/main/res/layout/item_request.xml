@@ -14,7 +14,7 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/ivImage"
+            android:id="@+id/cover2"
             android:layout_width="101dp"
             android:layout_height="96dp"
             android:scaleType="centerCrop"
