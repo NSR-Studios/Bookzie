@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Book">
         <activity
+            android:name=".ConfirmTransaction"
+            android:exported="false" />
+        <activity
             android:name=".BookDetail"
             android:exported="false" />
         <activity
@@ -39,7 +42,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

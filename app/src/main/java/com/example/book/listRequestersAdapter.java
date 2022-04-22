@@ -76,14 +76,14 @@ public class listRequestersAdapter extends RecyclerView.Adapter<listRequestersAd
             else
                 profilePic3.setImageResource(R.drawable.blank);
 
-//            container.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent i = new Intent(context, confirmTransaction.class);
-//                    i.putExtra("Request", Parcels.wrap(request));
-//                    context.startActivity(i);
-//                }
-//            });
+            buttonEdit2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(context, ConfirmTransaction.class);
+                    i.putExtra("Request", Parcels.wrap(request));
+                    context.startActivity(i);
+                }
+            });
         }
     }
 }
