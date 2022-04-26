@@ -31,6 +31,8 @@ public class singleTransaction extends AppCompatActivity {
     private TextView tvCondition2;
     private TextView tvPrice2;
     private TextView tvDescription2;
+    private TextView checkStatus;
+    private TextView listRequesters1;
     private ImageView cover2;
 
     private RecyclerView requester;
@@ -49,6 +51,8 @@ public class singleTransaction extends AppCompatActivity {
         tvPrice2 = findViewById(R.id.tv_Price2);
         tvDescription2 = findViewById(R.id.tvDescription2);;
         cover2 = findViewById(R.id.cover2);
+        checkStatus = findViewById(R.id.checkStatus);
+        listRequesters1 = findViewById(R.id.listRequesters);
 
         Request request = Parcels.unwrap(getIntent().getParcelableExtra("Request"));
         tvTitle2.setText(request.getPost().getBookTitle());
@@ -69,14 +73,19 @@ public class singleTransaction extends AppCompatActivity {
             Glide.with(this).load(image.getUrl()).into(cover2);
         }
 
-        requester = findViewById(R.id.requesters);
-        listRequesters = new ArrayList<>();
-        adapter = new listRequestersAdapter(this, listRequesters);
-        requester.setAdapter(adapter);
-        linearLayoutManager = new LinearLayoutManager(this);
-        requester.setLayoutManager(linearLayoutManager);
-        Log.i("singleTransaction", request.getPost().getObjectId());
-        queryRequesters(request.getPost().getObjectId());
+        if(request.getRequester().getUsername().equals(ParseUser.getCurrentUser().getUsername())) {
+            checkStatus.setText("Waiting for Seller Response");
+        }else{
+            listRequesters1.setText("Requesters");
+            requester = findViewById(R.id.requesters);
+            listRequesters = new ArrayList<>();
+            adapter = new listRequestersAdapter(this, listRequesters);
+            requester.setAdapter(adapter);
+            linearLayoutManager = new LinearLayoutManager(this);
+            requester.setLayoutManager(linearLayoutManager);
+            Log.i("singleTransaction", request.getPost().getObjectId());
+            queryRequesters(request.getPost().getObjectId());
+        }
     }
 
     protected void queryRequesters(String objectId) {
