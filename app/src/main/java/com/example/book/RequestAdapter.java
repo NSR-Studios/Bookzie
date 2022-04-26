@@ -80,9 +80,10 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
             else
                 tvBookTitle.setText("Title Placeholder");
             tvISBN.setText("ISBN: " + request.getPost().getISBN());
-            ParseFile image = request.getPost().getFrontImage();
+            String image = request.getPost().getImageUrl();
             if (image != null) {
-                Glide.with(context).load(image.getUrl()).into(ivImage);
+                image = image.substring(0,4) + "s" + image.substring(4);
+                Glide.with(context).load(image).into(ivImage);
             }
 
             container.setOnClickListener(new View.OnClickListener() {
