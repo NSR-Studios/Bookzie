@@ -12,9 +12,8 @@ Confirm Transactions Page
 
 Meeting Confirmation Page
 - [X] User can view Seller & Buyer information
-- [X] User can see book info (Title, Price & ISBN)
+- [X] User can see book info (Title, Price)
 - [X] User can see meeting location
-- [X] Map view of the meeting location
 - [X] Button to change location or time
 - [X] Button to cancel the transaction
 
