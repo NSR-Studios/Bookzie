@@ -172,9 +172,9 @@ public class ConfirmTransaction extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                /*Intent i = new Intent(ConfirmTransaction.this, MeetingConfirmation.this);
+                Intent i = new Intent(ConfirmTransaction.this, MeetingConfirmation.class);
                 i.putExtra("Transaction", Parcels.wrap(t));
-                startActivity(i);*/
+                startActivity(i);
             }
         });
     }

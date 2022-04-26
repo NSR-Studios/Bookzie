@@ -44,8 +44,10 @@
         <entry key="..\:/Users/sapan/Downloads/Bookzie/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/sapan/Downloads/Bookzie/app/src/main/res/layout/fragment_posts.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/sapan/Downloads/Bookzie/app/src/main/res/layout/fragment_profile.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/sapan/Downloads/Bookzie/app/src/main/res/layout/fragment_transactions.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/sapan/Downloads/Bookzie/app/src/main/res/layout/item_post.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/sapan/Downloads/Bookzie/app/src/main/res/layout/item_request.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/sapan/Downloads/Bookzie/app/src/main/res/layout/list_request.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/sapan/Downloads/Bookzie/app/src/main/res/layout/transaction_single.xml" value="0.36666666666666664" />
       </map>
     </option>
