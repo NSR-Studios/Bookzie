@@ -14,8 +14,6 @@ Meeting Confirmation Page
 - [X] User can view Seller & Buyer information
 - [X] User can see book info (Title, Price)
 - [X] User can see meeting location
-- [X] Button to change location or time
-- [X] Button to cancel the transaction
 
 Single Transaction Page
 - [X] View Book Cover from Books API
