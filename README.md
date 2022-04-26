@@ -1,6 +1,42 @@
 # Bookzie
 
-Unit 8: Group Milestone 
+## User Stories (Unit 12)
+The following functionality is completed:
+
+Confirm Transactions Page 
+- [X] View Book Cover from Books API
+- [X] View information obtained from Books API (title, category) & price from seller
+- [X] User can view Seller & Buyer information
+- [X] User can select meeting location from a list of buildings on campus & set time of meeting
+- [X] User can click the "Submit" Button to confirm transaction and view "Meeting Confirmation Screen"
+
+Meeting Confirmation Page
+- [X] User can view Seller & Buyer information
+- [X] User can see book info (Title, Price & ISBN)
+- [X] User can see meeting location
+- [X] Map view of the meeting location
+- [X] Button to change location or time
+- [X] Button to cancel the transaction
+
+Single Transaction Page
+- [X] View Book Cover from Books API
+- [X] View information obtained from Books API (title, category, description) & price from the seller
+- [X] See completed and pending requests in a recycler view
+
+
+
+## Video Walkthrough (Unit 12)
+
+Here's a walkthrough of implemented user stories:
+
+<img src='.gif' title='Video Walkthrough' width='350' alt='Video Walkthrough' />
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
+
+
+---
+
 
 ## User Stories (Unit 11)
 
