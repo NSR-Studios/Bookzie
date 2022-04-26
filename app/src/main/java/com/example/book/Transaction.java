@@ -48,6 +48,35 @@ public class Transaction extends ParseObject {
         put(KEY_LOCATION,location);
     }
 
+    public ParseUser getSeller()
+    {
+        return getParseUser(KEY_SELLER);
+    }
+
+    public ParseUser getBuyer()
+    {
+        return getParseUser(KEY_BUYER);
+    }
+
+    public Post getPost(){
+        return (Post) getParseObject(KEY_POST);
+    }
+
+    public String getDate()
+    {
+        return getString(KEY_DATE);
+    }
+
+    public String getTime()
+    {
+        return getString(KEY_TIME);
+    }
+
+    public String getLocation()
+    {
+        return getString(KEY_LOCATION);
+    }
+
 
 }
 
