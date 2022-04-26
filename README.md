@@ -21,7 +21,7 @@ Meeting Confirmation Page
 Single Transaction Page
 - [X] View Book Cover from Books API
 - [X] View information obtained from Books API (title, category, description) & price from the seller
-- [X] See completed and pending requests in a recycler view
+- [X] See list of requesters if applicable or waiting for seller response
 
 
 
@@ -29,7 +29,7 @@ Single Transaction Page
 
 Here's a walkthrough of implemented user stories:
 
-<img src='.gif' title='Video Walkthrough' width='350' alt='Video Walkthrough' />
+<img src='walkThroughMilestoneThree.gif' title='Video Walkthrough' width='350' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
