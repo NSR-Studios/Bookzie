@@ -26,7 +26,7 @@ Single Transaction Page
 
 Here's a walkthrough of implemented user stories:
 
-<img src='walkThroughMilestoneThree.gif' title='Video Walkthrough' width='350' alt='Video Walkthrough' />
+<img src='walkthrough.gif' title='Video Walkthrough' width='350' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
