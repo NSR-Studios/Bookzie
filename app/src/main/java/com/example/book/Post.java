@@ -24,6 +24,7 @@ public class Post extends ParseObject {
     public static final String BOOK_DESCRIPTION = "description";
     public static final String BOOK_CATEGORY = "category";
     public static final String BOOK_IMAGE = "ImageUrl";
+    public static final String PREVIEW = "preview";
 
     public String getImageUrl() {
         return getString(BOOK_IMAGE);
@@ -31,6 +32,14 @@ public class Post extends ParseObject {
 
     public void setImageUrl(String url) {
         put(BOOK_IMAGE,url);
+    }
+
+    public String getPrev() {
+        return getString(PREVIEW);
+    }
+
+    public void setPreview(String url) {
+        put(PREVIEW,url);
     }
 
     public String getBookCategory() {
