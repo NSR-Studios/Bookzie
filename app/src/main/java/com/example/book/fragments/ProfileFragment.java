@@ -28,6 +28,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
 import com.example.book.EndlessRecyclerViewScrollListener;
+import com.example.book.LoginActivity;
 import com.example.book.Post;
 import com.example.book.PostsAdapter;
 import com.example.book.R;
@@ -52,6 +53,7 @@ public class ProfileFragment extends Fragment {
     SwipeRefreshLayout refreshLayout;
     EndlessRecyclerViewScrollListener scrolling;
     Button EditMe;
+    Button Logout;
 
 
     @Override
@@ -93,6 +95,7 @@ public class ProfileFragment extends Fragment {
         }
 
         EditMe = view.findViewById(R.id.buttonEdit);
+        Logout = view.findViewById(R.id.buttonLogout);
         EditMe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,6 +133,17 @@ public class ProfileFragment extends Fragment {
                     e.printStackTrace();
                 }
 
+            }
+        });
+
+        Logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Toast.makeText(this,"Logout!", Toast.LENGTH_SHORT).show();
+                ParseUser.logOut();
+                ParseUser currentUser = ParseUser.getCurrentUser();
+                Intent iTwo = new Intent(getContext(), LoginActivity.class);
+                startActivity(iTwo);
             }
         });
         // Set up the password
