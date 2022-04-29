@@ -157,6 +157,7 @@ public class ComposeFragment extends Fragment {
                             String category = "";
                             String description = "";
                             String image = "";
+                            String link = "";
                             JSONArray results = jsonObject.getJSONArray("items");
                             Log.i(TAG, "Results: " + results.toString());
                             JSONObject vI = results.getJSONObject(0).getJSONObject("volumeInfo");
@@ -169,6 +170,8 @@ public class ComposeFragment extends Fragment {
                             Log.i(TAG,"Title: "+title);
                             category = vI.getJSONArray("categories").getString(0);
                             Log.i(TAG,"Category: "+category);
+                            link =  vI.getString("previewLink");
+                            //Log.i(TAG,"prev: "+link);
                             post.setISBN(BookNum);
                             post.setCondition(Condition.getText().toString());
                             post.setBackImage(new ParseFile(photoFile2));
@@ -178,6 +181,7 @@ public class ComposeFragment extends Fragment {
                             post.setBookTitle(title);
                             post.setBookDescription(description);
                             post.setBookCategory(category);
+                            post.setPreview(link);
                             post.saveInBackground(new SaveCallback() {
                                 @Override
                                 public void done(ParseException e) {
@@ -362,3 +366,4 @@ public class ComposeFragment extends Fragment {
     }
 
 }
+
