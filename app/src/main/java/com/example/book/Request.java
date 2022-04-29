@@ -32,5 +32,17 @@ public class Request extends ParseObject {
         return (Post) getParseObject(Postid);
     }
 
+    public void setSeller(ParseUser user) {
+        put(Seller, user);
+    }
+
+    public void setPost(ParseObject post) {
+        put(Postid, post);
+    }
+
+    public void setBuyer(ParseUser user) {
+        put(Requester, user);
+    }
+
 
 }
