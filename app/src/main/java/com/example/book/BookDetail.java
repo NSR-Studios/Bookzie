@@ -3,10 +3,13 @@ package com.example.book;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,6 +20,9 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.parse.ParseFile;
+import com.parse.ParseObject;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import org.parceler.Parcels;
 
@@ -33,6 +39,8 @@ public class BookDetail extends AppCompatActivity {
     private ImageView Front;
     private ImageView Back;
     private ImageView Cover;
+    private Button button;
+    private Button button3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +55,8 @@ public class BookDetail extends AppCompatActivity {
         Front = findViewById(R.id.Front);
         Back = findViewById(R.id.Back);
         Cover = findViewById(R.id.Cover);
+        button = findViewById(R.id.button);
+        button3 = findViewById(R.id.button3);
 
         Post post = Parcels.unwrap(getIntent().getParcelableExtra("Post"));
         tvTitle.setText(post.getBookTitle());
@@ -62,6 +72,43 @@ public class BookDetail extends AppCompatActivity {
         ParseFile BackImage = post.getBackImage();
         Glide.with(this).load(BackImage.getUrl()).into(Back);
         Glide.with(this).load(url).into(Cover);
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url = post.getPrev();
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+            }
+        });
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Request request = new Request();
+                    request.setSeller(post.getUser());
+                    request.setBuyer(ParseUser.getCurrentUser());
+                    request.setPost(post);
+                    request.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(com.parse.ParseException e) {
+                            if( e != null){
+                                Log.e("TAG", "Error while saving", e);
+                            }
+                            Log.i("TAG", "Transaction was successful!!" );
+                        }
+                    });
+                } catch (Exception e) {
+                    Log.e("TAG", "Hit exception", e);
+                    e.printStackTrace();
+                }
+
+                Intent i = new Intent(BookDetail.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
 
     }
 }
