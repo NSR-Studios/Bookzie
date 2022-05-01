@@ -18,7 +18,7 @@ public class Transaction extends ParseObject {
     public static final String KEY_LOCATION = "location";
     public static final String CANCELED = "canceled";
 
-    public void setCanceled(Boolean check){put(CANCELED, check);}
+    public void setCanceled(String check){put(CANCELED, check);}
 
     public void setSeller(ParseUser user)
     {
@@ -82,4 +82,5 @@ public class Transaction extends ParseObject {
 
 
 }
+
 
