@@ -95,7 +95,7 @@ public class MeetingConfirmation extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                transaction.setCanceled(true);
+                transaction.setCanceled("true");
                 Intent i = new Intent(MeetingConfirmation.this, MainActivity.class);
                 startActivity(i);
             }
@@ -104,7 +104,7 @@ public class MeetingConfirmation extends AppCompatActivity {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                transaction.setCanceled(true);
+                transaction.setCanceled("true");
                 Intent i = new Intent(MeetingConfirmation.this, ConfirmTransaction.class);
                 startActivity(i);
             }
