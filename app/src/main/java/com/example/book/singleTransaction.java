@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,6 +36,7 @@ public class singleTransaction extends AppCompatActivity {
     private TextView checkStatus;
     private TextView listRequesters1;
     private ImageView cover2;
+    private Button meetingDetails;
 
     private RecyclerView requester;
     protected listRequestersAdapter adapter;
@@ -51,8 +54,13 @@ public class singleTransaction extends AppCompatActivity {
         tvPrice2 = findViewById(R.id.tv_Price2);
         tvDescription2 = findViewById(R.id.tvDescription2);;
         cover2 = findViewById(R.id.cover2);
+        requester = findViewById(R.id.requesters);
         checkStatus = findViewById(R.id.checkStatus);
         listRequesters1 = findViewById(R.id.listRequesters);
+        meetingDetails = findViewById(R.id.meetingDetails);
+        meetingDetails.setVisibility(View.GONE);
+
+        linearLayoutManager = new LinearLayoutManager(this);
 
         Request request = Parcels.unwrap(getIntent().getParcelableExtra("Request"));
         tvTitle2.setText(request.getPost().getBookTitle());
@@ -73,19 +81,86 @@ public class singleTransaction extends AppCompatActivity {
             Glide.with(this).load(image.getUrl()).into(cover2);
         }
 
-        if(request.getRequester().getUsername().equals(ParseUser.getCurrentUser().getUsername())) {
-            checkStatus.setText("Waiting for Seller Response");
-        }else{
-            listRequesters1.setText("Requesters");
-            requester = findViewById(R.id.requesters);
-            listRequesters = new ArrayList<>();
-            adapter = new listRequestersAdapter(this, listRequesters);
-            requester.setAdapter(adapter);
-            linearLayoutManager = new LinearLayoutManager(this);
-            requester.setLayoutManager(linearLayoutManager);
-            Log.i("singleTransaction", request.getPost().getObjectId());
-            queryRequesters(request.getPost().getObjectId());
+        if (request.getPost().getMeetingSet() != null) {
+            if (request.getRequester().getUsername().equals(ParseUser.getCurrentUser().getUsername())) {
+                checkStatus.setText("Waiting for Seller Response");
+            } else if (request.getPost().getMeetingSet().equals("true") && !(request.getRequester().getUsername().equals(ParseUser.getCurrentUser().getUsername()))) {
+                queryCheck(request.getPost().getObjectId());
+            } else {
+                listRequesters1.setText("Requesters");
+                listRequesters = new ArrayList<>();
+                adapter = new listRequestersAdapter(this, listRequesters);
+                requester.setAdapter(adapter);
+                requester.setLayoutManager(linearLayoutManager);
+                Log.i("singleTransaction", request.getPost().getObjectId());
+                queryRequesters(request.getPost().getObjectId());
+            }
         }
+
+    }
+
+    protected void queryCheck(String objectId){
+        ParseQuery<Transaction> query = ParseQuery.getQuery(Transaction.class);
+        query.include(Transaction.KEY_POST);
+        query.include(Transaction.CANCELED);
+        Log.i("object id", objectId);
+        Log.i("key post", Transaction.KEY_POST);
+        query.include(objectId);
+        query.orderByDescending("createdAt");
+        query.setLimit(1);
+        query.findInBackground(new FindCallback<Transaction>() {
+            @Override
+            public void done(List<Transaction> transactions, ParseException e) {
+                if (e != null) {
+                    Log.e("singleTransaction","Issue with getting cancelled transaction details",e);
+                }
+                Log.i("transaction id", String.valueOf(transactions));
+                for (Transaction transaction : transactions){
+                    if (transaction.getCanceled() != "false"){
+                        Log.i("check", transaction.getTime());
+                        listRequesters1.setText("Meeting Confirmation");
+                        meetingDetails.setVisibility(View.VISIBLE);
+                        requester.setVisibility(View.GONE);
+                        checkStatus.setVisibility(View.GONE);
+                    }
+                }
+            }
+        });
+
+        meetingDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getDetails(objectId);
+            }
+        });
+    }
+
+    protected void getDetails(String objectId){
+        ParseQuery<Transaction> query = ParseQuery.getQuery(Transaction.class);
+        query.include(Transaction.KEY_LOCATION);
+        query.include(Transaction.KEY_BUYER);
+        query.include(Transaction.KEY_DATE);
+        query.include(Transaction.KEY_POST);
+        query.include(Transaction.KEY_SELLER);
+        query.include(Transaction.CANCELED);
+        query.include(Transaction.KEY_TIME);
+        query.include(objectId);
+        query.orderByDescending("createdAt");
+        query.setLimit(1);
+        query.findInBackground(new FindCallback<Transaction>() {
+            @Override
+            public void done(List<Transaction> transactions, ParseException e) {
+                if (e != null) {
+                    Log.e("Transaction Details","Issue with getting transaction details",e);
+                }
+                Log.i("transaction id", String.valueOf(transactions));
+                for (Transaction transaction : transactions){
+                    Intent i = new Intent(singleTransaction.this, MeetingConfirmation.class);
+                    i.putExtra("Transaction", Parcels.wrap(transaction));
+                    startActivity(i);
+                }
+            }
+        });
     }
 
     protected void queryRequesters(String objectId) {

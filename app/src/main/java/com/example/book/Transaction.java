@@ -20,6 +20,10 @@ public class Transaction extends ParseObject {
 
     public void setCanceled(Boolean check){put(CANCELED, check);}
 
+    public String getCanceled(){
+        return getString(CANCELED);
+    }
+
     public void setSeller(ParseUser user)
     {
         put(KEY_SELLER,user);

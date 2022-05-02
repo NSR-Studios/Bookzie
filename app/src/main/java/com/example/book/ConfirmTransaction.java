@@ -172,6 +172,8 @@ public class ConfirmTransaction extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
+                //Code for setting meetingSet column in post table to true
+
                 Intent i = new Intent(ConfirmTransaction.this, MeetingConfirmation.class);
                 i.putExtra("Transaction", Parcels.wrap(t));
                 startActivity(i);

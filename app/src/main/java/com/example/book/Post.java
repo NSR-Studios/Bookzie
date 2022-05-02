@@ -25,6 +25,8 @@ public class Post extends ParseObject {
     public static final String BOOK_CATEGORY = "category";
     public static final String BOOK_IMAGE = "ImageUrl";
     public static final String PREVIEW = "preview";
+    public static final String MEETING_SET = "meetingSet";
+    public static final String MARK_AS_COMPLETED = "markAsCompleted";
 
     public String getImageUrl() {
         return getString(BOOK_IMAGE);
@@ -123,6 +125,14 @@ public class Post extends ParseObject {
     }
 
     public Date getCreated(){return getCreatedAt();}
+
+    public String getMeetingSet(){return getString(MEETING_SET);}
+
+    public void setMeetingSet(){ put(MEETING_SET, "true");}
+
+    public String getMarkAsCompleted(){return getString(MARK_AS_COMPLETED);}
+
+    public void setMarkAsCompleted(){ put(MARK_AS_COMPLETED, "true");}
 }
 
 
