@@ -105,6 +105,7 @@ public class BookDetail extends AppCompatActivity {
                     request.setSeller(post.getUser());
                     request.setBuyer(ParseUser.getCurrentUser());
                     request.setPost(post);
+                    request.setStatus("false");
                     request.saveInBackground(new SaveCallback() {
                         @Override
                         public void done(com.parse.ParseException e) {
@@ -126,3 +127,4 @@ public class BookDetail extends AppCompatActivity {
 
     }
 }
+
