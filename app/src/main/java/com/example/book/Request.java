@@ -12,6 +12,8 @@ public class Request extends ParseObject {
     public static final String Postid = "postId";
     public static final String Status = "status";
 
+    public void setStatus(String status){put(Status, status);}
+
     public ParseUser getSeller() {
         return getParseUser(Seller);
     }
