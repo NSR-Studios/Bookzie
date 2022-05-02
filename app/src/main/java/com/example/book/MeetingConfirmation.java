@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
+import com.parse.ParseQuery;
+import com.parse.SaveCallback;
+
 
 import org.parceler.Parcels;
 
@@ -31,6 +34,7 @@ public class MeetingConfirmation extends AppCompatActivity {
     private Button cancel;
     private Button edit;
     private Button button2;
+    private Button confirm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +52,16 @@ public class MeetingConfirmation extends AppCompatActivity {
         button2 = findViewById(R.id.button2);
         cancel = findViewById(R.id.button4);
         edit = findViewById(R.id.edit);
+        confirm = findViewById(R.id.confirm);
 
         Transaction transaction = Parcels.unwrap(getIntent().getParcelableExtra("Transaction"));
         mc_username.setText(transaction.getSeller().getUsername());
         mc_username2.setText(transaction.getBuyer().getUsername());
         mc_location.setText(transaction.getLocation());
+
+        Post post = transaction.getPost();
+        post.setMarkAsCompleted();
+
         String longitude;
         String latitude;
         if(transaction.getLocation() == "Campus Center"){
@@ -92,10 +101,38 @@ public class MeetingConfirmation extends AppCompatActivity {
         String url3 = transaction.getSeller().getParseFile("ProfilePic").getUrl();
         Glide.with(this).load(url3).circleCrop().into(sellerimage);
 
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Post post = transaction.getPost();
+                post.setMarkAsCompleted();
+                post.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(com.parse.ParseException e) {
+                        if( e != null){
+                            Log.e("TAG", "Error while saving", e);
+                        }
+                        Log.i("TAG", "Transaction was successful!!" );
+                    }
+                });
+                Intent i = new Intent(MeetingConfirmation.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
+
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 transaction.setCanceled("true");
+                transaction.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(com.parse.ParseException e) {
+                        if( e != null){
+                            Log.e("TAG", "Error while saving", e);
+                        }
+                        Log.i("TAG", "Transaction was successful!!" );
+                    }
+                });
                 Intent i = new Intent(MeetingConfirmation.this, MainActivity.class);
                 startActivity(i);
             }
@@ -104,8 +141,20 @@ public class MeetingConfirmation extends AppCompatActivity {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ParseQuery<Request> query = ParseQuery.getQuery(Request.class);
+                query.include(String.valueOf(transaction.getPost()));
                 transaction.setCanceled("true");
+                transaction.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(com.parse.ParseException e) {
+                        if( e != null){
+                            Log.e("TAG", "Error while saving", e);
+                        }
+                        Log.i("TAG", "Transaction was successful!!" );
+                    }
+                });
                 Intent i = new Intent(MeetingConfirmation.this, ConfirmTransaction.class);
+                i.putExtra("Request", Parcels.wrap(query));
                 startActivity(i);
             }
         });
@@ -122,4 +171,5 @@ public class MeetingConfirmation extends AppCompatActivity {
 
 
     }
+
 }
