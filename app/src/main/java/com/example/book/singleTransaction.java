@@ -6,9 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -47,6 +51,16 @@ public class singleTransaction extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.transaction_single);
+
+        androidx.appcompat.app.ActionBar actionBar = getSupportActionBar();
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        actionBar.setTitle("");
+        actionBar.setDisplayShowCustomEnabled(true);
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#000000"));
+        actionBar.setBackgroundDrawable(colorDrawable);
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.logo, null);
+        actionBar.setCustomView(view);
 
         tvTitle2 = findViewById(R.id.tvTitle2);;
         tvCategory2 = findViewById(R.id.tvCategory2);
@@ -118,7 +132,6 @@ public class singleTransaction extends AppCompatActivity {
                 for (Transaction transaction : transactions){
                     if (transaction.getCanceled() != "false"){
                         Log.i("check", transaction.getTime());
-                        listRequesters1.setText("Meeting Confirmation");
                         meetingDetails.setVisibility(View.VISIBLE);
                         requester.setVisibility(View.GONE);
                         checkStatus.setVisibility(View.GONE);

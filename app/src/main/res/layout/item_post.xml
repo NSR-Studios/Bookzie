@@ -21,7 +21,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <LinearLayout
-            android:layout_width="150dp"
+            android:layout_width="172dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="20dp"
             android:orientation="vertical">
