@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.parse.FindCallback;
 import com.parse.Parse;
+import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -27,7 +28,6 @@ import org.parceler.Parcels;
 
 import java.lang.reflect.Array;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -173,6 +173,16 @@ public class ConfirmTransaction extends AppCompatActivity {
                 }
 
                 //Code for setting meetingSet column in post table to true
+                request.getPost().setMeetingSet();
+                request.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if( e != null){
+                            Log.e(TAG, "Error while saving", e);
+                        }
+                        Log.i(TAG, "SAVE THE MEETING SET was successful!!" );
+                    }
+                });
 
                 Intent i = new Intent(ConfirmTransaction.this, MeetingConfirmation.class);
                 i.putExtra("Transaction", Parcels.wrap(t));
