@@ -132,10 +132,10 @@ public class singleTransaction extends AppCompatActivity {
         }
 
         if (request.getPost().getMeetingSet() != null) {
-            if (request.getRequester().getUsername().equals(ParseUser.getCurrentUser().getUsername())) {
-                checkStatus.setText("Waiting for Seller Response");
-            } else if (request.getPost().getMeetingSet().equals("true")) {
+            if (request.getPost().getMeetingSet().equals("true")) {
                 queryCheck(request.getPost().getObjectId());
+            } else if (request.getRequester().getUsername().equals(ParseUser.getCurrentUser().getUsername())) {
+                checkStatus.setText("Waiting for Seller Response");
             } else {
                 listRequesters1.setText("Requesters");
                 listRequesters = new ArrayList<>();
@@ -288,6 +288,8 @@ public class singleTransaction extends AppCompatActivity {
         query.include(Request.Seller);
         query.include(Request.Postid);
         query.include(Request.Status);
+        Log.i("objectId", objectId);
+
         query.whereEqualTo(Request.Seller, ParseUser.getCurrentUser());
         query.whereEqualTo(Request.Status, "false");
         query.findInBackground(new FindCallback<Request>() {
@@ -298,9 +300,11 @@ public class singleTransaction extends AppCompatActivity {
                 }
                 for (Request request : requests) {
                     //To do
-                    Log.i("singleTransaction", "Pending Seller " + Request.getStatus());
-                    addRequesters(requests);
-                    adapter.notifyDataSetChanged();
+                    if (request.getPost().getObjectId().equals(objectId)) {
+                        Log.i("singleTransaction", "Pending Seller " + Request.getStatus());
+                        addRequesters(requests);
+                        adapter.notifyDataSetChanged();
+                    }
                 }
             }
         });

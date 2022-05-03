@@ -204,6 +204,7 @@ public class ConfirmTransaction extends AppCompatActivity {
                             Log.e(TAG, "Error while saving", e);
                         }
                         Log.i(TAG, "SAVE THE MEETING SET was successful!!" );
+                        Log.i("getter", request.getPost().getMeetingSet());
                     }
                 });
 
