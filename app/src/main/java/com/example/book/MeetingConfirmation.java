@@ -27,6 +27,7 @@ public class MeetingConfirmation extends AppCompatActivity {
         // Required empty public constructor
     }
 
+    private TextView mc_title;
     private TextView mc_isbn;
     private TextView mc_location;
     private TextView mc_price;
@@ -57,6 +58,7 @@ public class MeetingConfirmation extends AppCompatActivity {
         View view = inflater.inflate(R.layout.logo, null);
         actionBar.setCustomView(view);
 
+        mc_title = findViewById(R.id.mc_title);
         mc_isbn = findViewById(R.id.mc_isbn);
         mc_price = findViewById(R.id.mc_price);
         mc_location = findViewById(R.id.mc_location);
@@ -78,6 +80,7 @@ public class MeetingConfirmation extends AppCompatActivity {
         mc_location.setText(transaction.getLocation());
         time2.setText(transaction.getTime());
         date.setText(transaction.getDate());
+        mc_title.setText(transaction.getPost().getBookTitle());
 
         String longitude;
         String latitude;
