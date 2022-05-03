@@ -114,11 +114,25 @@ public class BookDetail extends AppCompatActivity {
                             }
                             Log.i("TAG", "Transaction was successful!!" );
                         }
+
                     });
+                    Post post = request.getPost();
+                    post.setMeetingSet("false");
+                    post.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(com.parse.ParseException e) {
+                            if( e != null){
+                                Log.e("TAG", "Error while saving", e);
+                            }
+                            Log.i("TAG", "Transaction was successful!!" );
+                        }
+                    });
+
                 } catch (Exception e) {
                     Log.e("TAG", "Hit exception", e);
                     e.printStackTrace();
                 }
+
 
                 Intent i = new Intent(BookDetail.this, MainActivity.class);
                 startActivity(i);
