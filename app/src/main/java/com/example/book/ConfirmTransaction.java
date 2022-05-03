@@ -135,14 +135,22 @@ public class ConfirmTransaction extends AppCompatActivity {
             Glide.with(this).load(url).into(imageCT);
         }
         else if (image != null) {
-            Glide.with(this).load(image.getUrl()).into(imageCT);
+            Glide.with(this).load(image.getUrl()).circleCrop().into(imageCT);
         }
 
-        String url = request.getRequester().getParseFile("ProfilePic").getUrl();
-        Glide.with(this).load(url).circleCrop().into(imageBuyerCT);
 
-        String url2 = request.getSeller().getParseFile("ProfilePic").getUrl();
-        Glide.with(this).load(url2).circleCrop().into(imageSellerCT);
+        ParseFile image3 = request.getRequester().getParseFile("ProfilePic");
+        if (image3 != null)
+            Glide.with(this).load(image3.getUrl()).circleCrop().into(imageBuyerCT);
+        else
+            imageBuyerCT.setImageResource(R.drawable.blank);
+
+
+        ParseFile image2 = request.getSeller().getParseFile("ProfilePic");
+        if (image2 != null)
+            Glide.with(this).load(image2.getUrl()).circleCrop().into(imageSellerCT);
+        else
+            imageSellerCT.setImageResource(R.drawable.blank);
 
         //NEED TO ADD VENMO TO THE DB!!!!!!!
 

@@ -191,10 +191,22 @@ public class singleTransaction extends AppCompatActivity {
                         timeTag.setVisibility(View.VISIBLE);
                         date.setVisibility(View.VISIBLE);
 
-                        String url1 = transaction.getBuyer().getParseFile("ProfilePic").getUrl();
+                        ParseFile image3 = transaction.getBuyer().getParseFile("ProfilePic");
+                        if (image3 != null)
+                            Glide.with(singleTransaction.this).load(image3.getUrl()).into(buyImage);
+                        else
+                            buyImage.setImageResource(R.drawable.blank);
+
+
+                        ParseFile image2 = transaction.getSeller().getParseFile("ProfilePic");
+                        if (image2 != null)
+                            Glide.with(singleTransaction.this).load(image2.getUrl()).into(sellImage);
+                        else
+                            sellImage.setImageResource(R.drawable.blank);
+                        /*String url1 = transaction.getBuyer().getParseFile("ProfilePic").getUrl();
                         Glide.with(singleTransaction.this).load(url1).into(buyImage);
                         String url2 = transaction.getSeller().getParseFile("ProfilePic").getUrl();
-                        Glide.with(singleTransaction.this).load(url2).into(sellImage);
+                        Glide.with(singleTransaction.this).load(url2).into(sellImage);*/
                         buyerId.setText(transaction.getBuyer().getUsername());
                         sellerId.setText(transaction.getSeller().getUsername());
                         location.setText(transaction.getLocation());
