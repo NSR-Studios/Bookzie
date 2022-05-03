@@ -59,9 +59,6 @@ public class MeetingConfirmation extends AppCompatActivity {
         mc_username2.setText(transaction.getBuyer().getUsername());
         mc_location.setText(transaction.getLocation());
 
-        Post post = transaction.getPost();
-        post.setMarkAsCompleted();
-
         String longitude;
         String latitude;
         if(transaction.getLocation() == "Campus Center"){
@@ -173,3 +170,4 @@ public class MeetingConfirmation extends AppCompatActivity {
     }
 
 }
+
