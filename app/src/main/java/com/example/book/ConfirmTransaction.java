@@ -156,7 +156,7 @@ public class ConfirmTransaction extends AppCompatActivity {
 
 
         categoryCT.setText(post.getBookCategory());
-        priceCT.setText(post.getPrice());
+        priceCT.setText(post.getPrice()+"");
         conditionCT.setText(post.getCondition());
 
         sellerCT.setText(request.getSeller().getUsername());
