@@ -35,6 +35,8 @@ public class MeetingConfirmation extends AppCompatActivity {
     private Button edit;
     private Button button2;
     private Button confirm;
+    private TextView time2;
+    private TextView date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +55,15 @@ public class MeetingConfirmation extends AppCompatActivity {
         cancel = findViewById(R.id.button4);
         edit = findViewById(R.id.edit);
         confirm = findViewById(R.id.confirm);
+        time2 = findViewById(R.id.time2);
+        date = findViewById(R.id.date);
 
         Transaction transaction = Parcels.unwrap(getIntent().getParcelableExtra("Transaction"));
         mc_username.setText(transaction.getSeller().getUsername());
         mc_username2.setText(transaction.getBuyer().getUsername());
         mc_location.setText(transaction.getLocation());
+        time2.setText(transaction.getTime());
+        date.setText(transaction.getDate());
 
         String longitude;
         String latitude;
@@ -170,4 +176,3 @@ public class MeetingConfirmation extends AppCompatActivity {
     }
 
 }
-

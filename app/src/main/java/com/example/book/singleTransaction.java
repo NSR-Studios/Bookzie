@@ -131,7 +131,7 @@ public class singleTransaction extends AppCompatActivity {
         if (request.getPost().getMeetingSet() != null) {
             if (request.getRequester().getUsername().equals(ParseUser.getCurrentUser().getUsername())) {
                 checkStatus.setText("Waiting for Seller Response");
-            } else if (request.getPost().getMeetingSet().equals("true") && !(request.getRequester().getUsername().equals(ParseUser.getCurrentUser().getUsername()))) {
+            } else if (request.getPost().getMeetingSet().equals("true")) {
                 queryCheck(request.getPost().getObjectId());
             } else {
                 listRequesters1.setText("Requesters");
