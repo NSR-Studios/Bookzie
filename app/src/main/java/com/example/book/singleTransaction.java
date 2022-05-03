@@ -42,6 +42,17 @@ public class singleTransaction extends AppCompatActivity {
     private ImageView cover2;
     private Button meetingDetails;
 
+    private ImageView buyImage;
+    private ImageView sellImage;
+    private TextView buyer;
+    private TextView seller;
+    private TextView location;
+    private TextView locationTag;
+    private TextView time;
+    private TextView timeTag;
+    private TextView buyerId;
+    private TextView sellerId;
+
     private RecyclerView requester;
     protected listRequestersAdapter adapter;
     private LinearLayoutManager linearLayoutManager;
@@ -73,6 +84,28 @@ public class singleTransaction extends AppCompatActivity {
         listRequesters1 = findViewById(R.id.listRequesters);
         meetingDetails = findViewById(R.id.meetingDetails);
         meetingDetails.setVisibility(View.GONE);
+
+        buyImage = findViewById(R.id.buyImage);
+        sellImage = findViewById(R.id.sellImage);
+        buyer = findViewById(R.id.buyer);
+        seller = findViewById(R.id.seller);
+        buyerId = findViewById(R.id.buyerId);
+        sellerId = findViewById(R.id.sellerId);
+        location = findViewById(R.id.location);
+        locationTag = findViewById(R.id.locationTag);
+        time = findViewById(R.id.time);
+        timeTag = findViewById(R.id.timeTag);
+
+        buyImage.setVisibility(View.GONE);
+        sellImage.setVisibility(View.GONE);
+        buyer.setVisibility(View.GONE);
+        seller.setVisibility(View.GONE);
+        sellerId.setVisibility(View.GONE);
+        buyerId.setVisibility(View.GONE);
+        location.setVisibility(View.GONE);
+        locationTag.setVisibility(View.GONE);
+        time.setVisibility(View.GONE);
+        timeTag.setVisibility(View.GONE);
 
         linearLayoutManager = new LinearLayoutManager(this);
 
@@ -111,6 +144,62 @@ public class singleTransaction extends AppCompatActivity {
             }
         }
 
+        if (request.getPost().getMarkAsCompleted() != null){
+            if (request.getPost().getMarkAsCompleted().equals("true")){
+                listRequesters1.setText("Transaction Completed");
+                queryComplete(request.getPost().getObjectId());
+            }
+        }
+
+    }
+
+    private void queryComplete(String objectId) {
+        ParseQuery<Transaction> query = ParseQuery.getQuery(Transaction.class);
+        query.include(Transaction.KEY_LOCATION);
+        query.include(Transaction.KEY_BUYER);
+        query.include(Transaction.KEY_DATE);
+        query.include(Transaction.KEY_POST);
+        query.include(Transaction.KEY_SELLER);
+        query.include(Transaction.CANCELED);
+        query.include(Transaction.KEY_TIME);
+        query.include(objectId);
+        query.orderByDescending("createdAt");
+        query.setLimit(1);
+        query.findInBackground(new FindCallback<Transaction>() {
+            @Override
+            public void done(List<Transaction> transactions, ParseException e) {
+                if (e != null) {
+                    Log.e("singleTransaction","Issue with getting cancelled transaction details",e);
+                }
+                Log.i("transaction id", String.valueOf(transactions));
+                for (Transaction transaction : transactions){
+                    if (transaction.getCanceled() != "false"){
+                        Log.i("check", transaction.getTime());
+                        checkStatus.setVisibility(View.GONE);
+                        meetingDetails.setVisibility(View.GONE);
+                        buyImage.setVisibility(View.VISIBLE);
+                        sellImage.setVisibility(View.VISIBLE);
+                        buyer.setVisibility(View.VISIBLE);
+                        seller.setVisibility(View.VISIBLE);
+                        sellerId.setVisibility(View.VISIBLE);
+                        buyerId.setVisibility(View.VISIBLE);
+                        location.setVisibility(View.VISIBLE);
+                        locationTag.setVisibility(View.VISIBLE);
+                        time.setVisibility(View.VISIBLE);
+                        timeTag.setVisibility(View.VISIBLE);
+
+                        String url1 = transaction.getBuyer().getParseFile("ProfilePic").getUrl();
+                        Glide.with(singleTransaction.this).load(url1).into(buyImage);
+                        String url2 = transaction.getSeller().getParseFile("ProfilePic").getUrl();
+                        Glide.with(singleTransaction.this).load(url2).into(sellImage);
+                        buyerId.setText(transaction.getBuyer().getUsername());
+                        sellerId.setText(transaction.getSeller().getUsername());
+                        location.setText(transaction.getLocation());
+                        time.setText(transaction.getTime());
+                    }
+                }
+            }
+        });
     }
 
     protected void queryCheck(String objectId){
@@ -183,7 +272,7 @@ public class singleTransaction extends AppCompatActivity {
         query.include(Request.Seller);
         query.include(Request.Postid);
         query.include(Request.Status);
-        query.whereEqualTo(Request.Requester, ParseUser.getCurrentUser());
+        query.whereEqualTo(Request.Seller, ParseUser.getCurrentUser());
         query.whereEqualTo(Request.Status, "false");
         query.findInBackground(new FindCallback<Request>() {
             @Override

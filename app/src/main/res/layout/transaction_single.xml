@@ -183,4 +183,123 @@
         android:textColor="#071D49"
         android:textSize="24sp" />
 
+    <ImageView
+        android:id="@+id/buyImage"
+        android:layout_width="102dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/buyer"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="10dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/sellImage"
+        android:layout_width="102dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/seller"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/buyImage"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/buyer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/listRequesters"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="15dp"
+        android:text="Buyer"
+        android:textColor="#D22630"
+        android:textSize="20sp"
+        tools:text="Buyer" />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/listRequesters"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="63dp"
+        android:layout_toEndOf="@+id/buyImage"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        tools:text="Location" />
+
+    <TextView
+        android:id="@+id/timeTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sellerId"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="21dp"
+        android:layout_toEndOf="@+id/location"
+        android:textColor="#D22630"
+        android:textSize="20sp"
+        tools:text="Time" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/location"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/buyImage"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        tools:text="time" />
+
+    <TextView
+        android:id="@+id/locationTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buyerId"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#D22630"
+        android:textSize="20sp"
+        tools:text="Location" />
+
+    <TextView
+        android:id="@+id/seller"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/listRequesters"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="275dp"
+        android:layout_marginTop="15dp"
+        android:text="Seller"
+        android:textColor="#D22630"
+        android:textSize="20sp"
+        tools:text="Seller" />
+
+    <TextView
+        android:id="@+id/buyerId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buyImage"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="5dp"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        tools:text="Buyer" />
+
+    <TextView
+        android:id="@+id/sellerId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sellImage"
+        android:layout_marginStart="190dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/buyerId"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        tools:text="Seller" />
+
 </RelativeLayout>
