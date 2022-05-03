@@ -128,7 +128,7 @@ public class Post extends ParseObject {
 
     public String getMeetingSet(){return getString(MEETING_SET);}
 
-    public void setMeetingSet(){ put(MEETING_SET, "true");}
+    public void setMeetingSet(String check){ put(MEETING_SET, check);}
 
     public String getMarkAsCompleted(){return getString(MARK_AS_COMPLETED);}
 
