@@ -198,9 +198,9 @@
         android:layout_width="102dp"
         android:layout_height="100dp"
         android:layout_below="@+id/seller"
-        android:layout_marginStart="112dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_toEndOf="@+id/buyImage"
+        android:layout_toEndOf="@+id/location"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -218,7 +218,7 @@
 
     <TextView
         android:id="@+id/location"
-        android:layout_width="90dp"
+        android:layout_width="115dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/listRequesters"
         android:layout_marginStart="10dp"
@@ -246,12 +246,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/location"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="37dp"
         android:layout_toEndOf="@+id/buyImage"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         tools:text="time" />
+
+    <TextView
+        android:id="@+id/dateMeet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/location"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="6dp"
+        android:layout_toEndOf="@+id/buyImage"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        tools:text="date" />
 
     <TextView
         android:id="@+id/locationTag"

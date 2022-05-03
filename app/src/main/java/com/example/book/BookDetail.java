@@ -133,7 +133,6 @@ public class BookDetail extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-
                 Intent i = new Intent(BookDetail.this, MainActivity.class);
                 startActivity(i);
             }

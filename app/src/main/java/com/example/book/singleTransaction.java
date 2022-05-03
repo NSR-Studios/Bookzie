@@ -52,6 +52,7 @@ public class singleTransaction extends AppCompatActivity {
     private TextView timeTag;
     private TextView buyerId;
     private TextView sellerId;
+    private TextView date;
 
     private RecyclerView requester;
     protected listRequestersAdapter adapter;
@@ -95,6 +96,7 @@ public class singleTransaction extends AppCompatActivity {
         locationTag = findViewById(R.id.locationTag);
         time = findViewById(R.id.time);
         timeTag = findViewById(R.id.timeTag);
+        date = findViewById(R.id.dateMeet);
 
         buyImage.setVisibility(View.GONE);
         sellImage.setVisibility(View.GONE);
@@ -106,6 +108,7 @@ public class singleTransaction extends AppCompatActivity {
         locationTag.setVisibility(View.GONE);
         time.setVisibility(View.GONE);
         timeTag.setVisibility(View.GONE);
+        date.setVisibility(View.GONE);
 
         linearLayoutManager = new LinearLayoutManager(this);
 
@@ -150,7 +153,6 @@ public class singleTransaction extends AppCompatActivity {
                 queryComplete(request.getPost().getObjectId());
             }
         }
-
     }
 
     private void queryComplete(String objectId) {
@@ -187,6 +189,7 @@ public class singleTransaction extends AppCompatActivity {
                         locationTag.setVisibility(View.VISIBLE);
                         time.setVisibility(View.VISIBLE);
                         timeTag.setVisibility(View.VISIBLE);
+                        date.setVisibility(View.VISIBLE);
 
                         String url1 = transaction.getBuyer().getParseFile("ProfilePic").getUrl();
                         Glide.with(singleTransaction.this).load(url1).into(buyImage);
@@ -196,6 +199,7 @@ public class singleTransaction extends AppCompatActivity {
                         sellerId.setText(transaction.getSeller().getUsername());
                         location.setText(transaction.getLocation());
                         time.setText(transaction.getTime());
+                        date.setText(transaction.getDate());
                     }
                 }
             }

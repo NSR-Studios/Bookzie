@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context=".ConfirmTransaction">
 
     <ImageView
         android:id="@+id/imageCT"
-        android:layout_width="118dp"
-        android:layout_height="230dp"
+        android:layout_width="155dp"
+        android:layout_height="173dp"
+        android:layout_below="@+id/categoryCT"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="27dp"
-        android:layout_marginLeft="27dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="15dp"
         tools:ignore="ImageContrastCheck"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -24,10 +23,12 @@
         android:id="@+id/titleCT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="54dp"
-        android:layout_toEndOf="@+id/imageCT"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="15dp"
+        android:textColor="#D22630"
+        android:textSize="20sp"
         tools:text="Title" />
 
     <TextView
@@ -35,9 +36,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/titleCT"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="21dp"
-        android:layout_toEndOf="@+id/imageCT"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#D22630"
+        android:textSize="16sp"
         tools:text="Category" />
 
     <TextView
@@ -45,9 +48,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/categoryCT"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="36dp"
+        android:layout_toEndOf="@+id/conditionCT2"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        tools:text="Condition" />
+
+    <TextView
+        android:id="@+id/conditionCT2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/categoryCT"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="36dp"
         android:layout_toEndOf="@+id/imageCT"
+        android:textColor="#D22630"
+        android:textSize="16sp"
         tools:text="Condition" />
 
     <TextView
@@ -55,21 +72,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/conditionCT"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="27dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@+id/priceCT2"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        tools:text="Price" />
+
+    <TextView
+        android:id="@+id/priceCT2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/conditionCT"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
         android:layout_toEndOf="@+id/imageCT"
+        android:textColor="#D22630"
+        android:textSize="16sp"
         tools:text="Price" />
 
     <ImageView
         android:id="@+id/imageSellerCT"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_below="@+id/imageCT"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="false"
-        android:layout_marginStart="6dp"
-        android:layout_marginLeft="103dp"
-        android:layout_marginTop="12dp"
+        android:layout_below="@+id/sellerCT"
+        android:layout_marginStart="109dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/imageBuyerCT"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -77,11 +106,10 @@
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageCT"
-        android:layout_alignParentLeft="false"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="34dp"
-        android:layout_toEndOf="@+id/imageSellerCT"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@+id/buyerCT"
+        android:textColor="#FFFFFF"
         android:textStyle="bold"
         tools:text="Seller" />
 
@@ -89,34 +117,32 @@
         android:id="@+id/imageBuyerCT"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_below="@+id/priceCT"
+        android:layout_below="@+id/buyerCT"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="false"
-        android:layout_marginStart="193dp"
+        android:layout_marginStart="28dp"
         android:layout_marginLeft="103dp"
-        android:layout_marginTop="61dp"
+        android:layout_marginTop="10dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/buyerCT"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/priceCT"
-        android:layout_alignParentLeft="false"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="89dp"
-        android:layout_toEndOf="@+id/imageBuyerCT"
+        android:layout_below="@+id/imageCT"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="15dp"
+        android:textColor="#FFFFFF"
         android:textStyle="bold"
-        tools:text="Seller" />
+        tools:text="Buyer" />
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="98dp"
         android:layout_below="@+id/imageBuyerCT"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:layout_marginBottom="189dp"
         android:minHeight="48dp"
         android:spinnerMode="dialog"
@@ -126,26 +152,34 @@
         android:id="@+id/editTextTime"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="106dp"
-        android:ems="10"
+        android:layout_below="@+id/imageBuyerCT"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="581dp"
+        android:layout_toEndOf="@+id/editTextDate2"
         android:hint="Enter Time"
         android:inputType="time"
         android:minHeight="48dp"
+        android:textAlignment="center"
+        android:textColorHint="#D22630"
+        android:textSize="16sp"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/editTextDate2"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="28dp"
         android:layout_marginBottom="100dp"
         android:ems="10"
         android:hint="Enter Date"
         android:inputType="date"
         android:minHeight="48dp"
+        android:textAlignment="center"
+        android:textColorHint="#D22630"
+        android:textSize="16sp"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
@@ -154,8 +188,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="141dp"
-        android:layout_marginBottom="34dp"
-        android:text="Submit" />
+        android:layout_marginStart="162dp"
+        android:layout_marginBottom="50dp"
+        android:backgroundTint="#D22630"
+        android:text="Submit"
+        android:textColor="#071D49" />
 
 </RelativeLayout>

@@ -2,9 +2,13 @@ package com.example.book;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -62,6 +66,17 @@ public class ConfirmTransaction extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_transaction);
+
+        androidx.appcompat.app.ActionBar actionBar = getSupportActionBar();
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        actionBar.setTitle("");
+        actionBar.setDisplayShowCustomEnabled(true);
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#000000"));
+        actionBar.setBackgroundDrawable(colorDrawable);
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.logo, null);
+        actionBar.setCustomView(view);
+
         titleCT = findViewById(R.id.titleCT);
         imageCT = findViewById(R.id.imageCT);
         categoryCT = findViewById(R.id.categoryCT);
@@ -132,12 +147,12 @@ public class ConfirmTransaction extends AppCompatActivity {
         //NEED TO ADD VENMO TO THE DB!!!!!!!
 
 
-        categoryCT.setText("Category: "+post.getBookCategory());
-        priceCT.setText("Price:  $ "+post.getPrice());
-        conditionCT.setText("Condition: "+post.getCondition());
+        categoryCT.setText(post.getBookCategory());
+        priceCT.setText(post.getPrice());
+        conditionCT.setText(post.getCondition());
 
-        sellerCT.setText("Seller: "+request.getSeller().getUsername());
-        buyerCT.setText("Buyer: "+request.getRequester().getUsername());
+        sellerCT.setText(request.getSeller().getUsername());
+        buyerCT.setText(request.getRequester().getUsername());
 
         //titlePage.setText("Confirm Transaction");
         //Transaction t = new Transaction();
