@@ -173,7 +173,7 @@ public class ConfirmTransaction extends AppCompatActivity {
                 }
 
                 //Code for setting meetingSet column in post table to true
-                request.getPost().setMeetingSet();
+                request.getPost().setMeetingSet("true");
                 request.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(ParseException e) {
