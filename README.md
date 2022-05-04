@@ -1,4 +1,22 @@
 # Bookzie
+## User Stretch Stories (Unit 13)
+
+The following functionality is completed:
+
+- [X] User can view a map of the meeting location
+- [X] App automatically shows the map and directions
+
+## Video Walkthrough (Unit 13)
+
+Here's a walkthrough of implemented user stories:
+
+<img src='Final Walkthrough.gif' title='Video Walkthrough' width='350' alt='Video Walkthrough' />
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
+
+
+---
 
 ## User Stories (Unit 12)
 The following functionality is completed:
@@ -13,7 +31,6 @@ Confirm Transactions Page
 Meeting Confirmation Page
 - [X] User can view Seller & Buyer information
 - [X] User can see book info (Title, Price)
-- [X] User can see meeting location
 
 Single Transaction Page
 - [X] View Book Cover from Books API
