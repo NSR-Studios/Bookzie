@@ -129,6 +129,27 @@ public class MeetingConfirmation extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ParseQuery<Request> query = ParseQuery.getQuery(Request.class);
+                //get all the transactions
+                query.include(Request.Requester);
+                query.include(Request.Seller);
+                query.include(Request.Postid);
+                query.include(Request.Status);
+
+                query.whereEqualTo(Request.Requester, transaction.getBuyer());
+                query.whereEqualTo(Request.Status, "false");
+                query.findInBackground(new FindCallback<Request>() {
+                    @Override
+                    public void done(List<Request> requests, ParseException e) {
+                        if (e != null) {
+                            Log.e("singleTransaction","Issue with getting pending transactions",e);
+                        }
+                        for (Request request : requests) {
+                            request.setStatus("true");
+                            break;
+                        }
+                    }
+                });
                 Post post = transaction.getPost();
                 post.setMarkAsCompleted();
                 post.saveInBackground(new SaveCallback() {
