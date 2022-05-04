@@ -1,5 +1,8 @@
 # Bookzie
 ## User Stretch Stories (Unit 13)
+
+The following functionality is completed:
+
 - [X] User can view a map of the meeting location
 - [X] App automatically shows the map and directions
 
