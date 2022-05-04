@@ -37,7 +37,6 @@ public class MeetingConfirmation extends AppCompatActivity {
     private ImageView sellerimage;
     private ImageView bookimage;
     private Button cancel;
-    private Button edit;
     private Button button2;
     private Button confirm;
     private TextView time2;
@@ -69,7 +68,6 @@ public class MeetingConfirmation extends AppCompatActivity {
         bookimage = findViewById(R.id.bookimage);
         button2 = findViewById(R.id.button2);
         cancel = findViewById(R.id.button4);
-        edit = findViewById(R.id.edit);
         confirm = findViewById(R.id.confirm);
         time2 = findViewById(R.id.time2);
         date = findViewById(R.id.date);
@@ -158,26 +156,7 @@ public class MeetingConfirmation extends AppCompatActivity {
             }
         });
 
-        edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ParseQuery<Request> query = ParseQuery.getQuery(Request.class);
-                query.include(String.valueOf(transaction.getPost()));
-                transaction.setCanceled("true");
-                transaction.saveInBackground(new SaveCallback() {
-                    @Override
-                    public void done(com.parse.ParseException e) {
-                        if( e != null){
-                            Log.e("TAG", "Error while saving", e);
-                        }
-                        Log.i("TAG", "Transaction was successful!!" );
-                    }
-                });
-                Intent i = new Intent(MeetingConfirmation.this, ConfirmTransaction.class);
-                i.putExtra("Request", Parcels.wrap(query));
-                startActivity(i);
-            }
-        });
+
 
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
