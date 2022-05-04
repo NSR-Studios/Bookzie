@@ -80,7 +80,6 @@ public class TransactionFragment extends Fragment {
         query.include(Request.Status);
         query.whereEqualTo(Request.Requester, ParseUser.getCurrentUser());
         query.whereEqualTo(Request.Status, "false");
-        query.setLimit(5);
         //To Do: Add filters here for pending ones
         query.findInBackground(new FindCallback<Request>() {
             @Override
@@ -104,7 +103,6 @@ public class TransactionFragment extends Fragment {
         query.include(Request.Status);
         query.whereEqualTo(Request.Seller, ParseUser.getCurrentUser());
         query.whereEqualTo(Request.Status, "false");
-        query.setLimit(5);
         query.findInBackground(new FindCallback<Request>() {
             @Override
             public void done(List<Request> requests, ParseException e) {
@@ -130,7 +128,6 @@ public class TransactionFragment extends Fragment {
         query.include(Request.Status);
         query.whereEqualTo(Request.Requester, ParseUser.getCurrentUser());
         query.whereEqualTo(Request.Status, "true");
-        query.setLimit(5);
         //To Do: Add filters here for pending ones
         query.findInBackground(new FindCallback<Request>() {
             @Override
@@ -154,7 +151,6 @@ public class TransactionFragment extends Fragment {
         query.include(Request.Status);
         query.whereEqualTo(Request.Seller, ParseUser.getCurrentUser());
         query.whereEqualTo(Request.Status, "true");
-        query.setLimit(5);
         query.findInBackground(new FindCallback<Request>() {
             @Override
             public void done(List<Request> requests, ParseException e) {

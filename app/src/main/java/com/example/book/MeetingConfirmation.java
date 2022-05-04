@@ -15,11 +15,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
+import com.parse.FindCallback;
+import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 
 import org.parceler.Parcels;
+
+import java.util.List;
 
 public class MeetingConfirmation extends AppCompatActivity {
 
@@ -38,6 +43,7 @@ public class MeetingConfirmation extends AppCompatActivity {
     private ImageView bookimage;
     private Button cancel;
     private Button button2;
+    private Button edit;
     private Button confirm;
     private TextView time2;
     private TextView date;
@@ -71,6 +77,7 @@ public class MeetingConfirmation extends AppCompatActivity {
         confirm = findViewById(R.id.confirm);
         time2 = findViewById(R.id.time2);
         date = findViewById(R.id.date);
+        edit = findViewById(R.id.edit);
 
         Transaction transaction = Parcels.unwrap(getIntent().getParcelableExtra("Transaction"));
         mc_username.setText(transaction.getSeller().getUsername());
@@ -141,6 +148,18 @@ public class MeetingConfirmation extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Post post = transaction.getPost();
+                post.setMeetingSet("false");
+                post.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(com.parse.ParseException e) {
+                        if( e != null){
+                            Log.e("TAG", "Error while saving", e);
+                        }
+                        Log.i("TAG", "Meeting was unset" );
+                    }
+                });
+                Log.i("check", ""+post.getMeetingSet() );
                 transaction.setCanceled("true");
                 transaction.saveInBackground(new SaveCallback() {
                     @Override
@@ -148,7 +167,7 @@ public class MeetingConfirmation extends AppCompatActivity {
                         if( e != null){
                             Log.e("TAG", "Error while saving", e);
                         }
-                        Log.i("TAG", "Transaction was successful!!" );
+                        Log.i("TAG", "Transaction was cancelled!!" );
                     }
                 });
                 Intent i = new Intent(MeetingConfirmation.this, MainActivity.class);
@@ -168,6 +187,35 @@ public class MeetingConfirmation extends AppCompatActivity {
             }
         });
 
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                transaction.setCanceled("true");
+                ParseQuery<Request> query = ParseQuery.getQuery(Request.class);
+                //get all the transactions
+                query.include(Request.Requester);
+                query.include(Request.Seller);
+                query.include(Request.Postid);
+                query.include(Request.Status);
+
+                query.whereEqualTo(Request.Requester, transaction.getBuyer());
+                query.whereEqualTo(Request.Status, "false");
+                query.findInBackground(new FindCallback<Request>() {
+                    @Override
+                    public void done(List<Request> requests, ParseException e) {
+                        if (e != null) {
+                            Log.e("singleTransaction","Issue with getting pending transactions",e);
+                        }
+                        for (Request request : requests) {
+                            Intent i = new Intent(MeetingConfirmation.this, ConfirmTransaction.class);
+                            i.putExtra("Request", Parcels.wrap(request));
+                            startActivity(i);
+                            break;
+                        }
+                    }
+                });
+            }
+        });
 
     }
 
