@@ -1,4 +1,9 @@
 # Bookzie
+
+## Full app Walkthrough
+
+<img src='Full Walkthrough.gif' title='Video Walkthrough' width='350' alt='Video Walkthrough' />
+
 ## User Stretch Stories (Unit 13)
 
 The following functionality is completed:
